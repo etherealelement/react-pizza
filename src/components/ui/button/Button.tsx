@@ -4,5 +4,9 @@ import styles from "./Button.module.scss";
 
 
 export const Button: FC<ButtonProps> = ({variant,text, ...props}): JSX.Element => {
-	return <div>Button Dyvi</div>;
+	return <>
+	<button>
+		Добавить
+	</button>
+	</>;
 };
