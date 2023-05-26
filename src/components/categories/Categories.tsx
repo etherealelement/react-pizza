@@ -37,6 +37,6 @@ export const Categories: FC = ():JSX.Element => {
         }
     ]
     return <ul className={styles.ul}>
-        {ulArray.map((item:any, index) => <ListItems key={item.id} className={styles.liItem} state={item.state}>{item.name}</ListItems>)}
+        {ulArray.map((item:any) => <ListItems key={item.id} className={styles.liItem} state={item.state}>{item.name}</ListItems>)}
     </ul>;
 };
