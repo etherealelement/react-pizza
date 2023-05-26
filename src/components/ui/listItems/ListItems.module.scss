@@ -1,0 +1,20 @@
+.li {
+    text-align: center;
+	list-style: none;
+	padding: 13px 36px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.default {
+	background: #f9f9f9;
+	border-radius: 30px;
+	color: #2c2c2c;
+}
+
+.active {
+	background: #282828;
+	border-radius: 30px;
+    color: #f9f9f9;
+}
