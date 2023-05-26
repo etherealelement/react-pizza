@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./Header.module.scss";
 import { HeaderProps } from "./Header.props";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
+import { ReactComponent as CartIcon} from "../../assets/shopping-cart.svg";
 
 export const Header: FC<HeaderProps> = ({
 	children,
@@ -24,7 +25,7 @@ export const Header: FC<HeaderProps> = ({
 			<div className={styles.col2}>
 				<button className={styles.button}>
 					<span className={styles.totalPrice}>{totalPrice} ₽</span>
-					<span className={styles.totalProduct}>{totalProduct}</span>
+					<span className={styles.totalProduct}> <CartIcon></CartIcon>{totalProduct}</span>
 				</button>
 			</div>
 		</header>

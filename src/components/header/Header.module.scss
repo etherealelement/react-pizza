@@ -7,6 +7,7 @@
 .wrapper {
 	display: flex;
 	align-items: center;
+    cursor: pointer;
 }
 
 .container {
@@ -35,6 +36,12 @@
 	border-radius: 30px;
 	border: 1px solid #fe5f1e;
 	padding: 15px 23px 19px;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.button:hover { 
+    background: #eb5a1e;
 }
 
 .totalPrice {
@@ -42,6 +49,20 @@
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 19px;
-    border-right: 1px solid rgba(255, 255, 255, 0.25);
-    padding-right: 13px;
+	border-right: 1px solid rgba(255, 255, 255, 0.25);
+	padding-right: 13px;
+}
+
+.totalProduct {
+	display: flex;
+	align-items: center;
+	padding-left: 13px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+	color: #ffffff;
+}
+
+.totalProduct svg {
+	margin-right: 6px;
 }
