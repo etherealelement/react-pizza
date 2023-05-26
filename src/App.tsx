@@ -1,12 +1,10 @@
-import "./App.scss"
-import { Button } from "./components/ui/button/Button"
-function App() {
+import "./App.scss";
+import { Header } from "./components/header/Header";
 
-  return (
-    <>
-    <Button variant="primary"></Button>
-    </>
-  )
+function App() {
+	return <>
+  <Header  totalProduct={3} subtitle={"самая вкусная пицца во вселенной"} totalPrice={520}>REACT PIZZA</Header>
+  </>;
 }
 
-export default App
+export default App;

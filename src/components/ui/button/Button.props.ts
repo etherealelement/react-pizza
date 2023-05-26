@@ -1,6 +1,7 @@
-import { DetailedHTMLProps, ButtonHTMLAttributes } from "react";
+import { DetailedHTMLProps, ButtonHTMLAttributes, ReactNode } from "react";
 
 export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
-	text?:string;
-	variant: "primary" | "actived";
+	variant?: "default" | "actived";
+	children: ReactNode;
+	isPlus: boolean;
 } 

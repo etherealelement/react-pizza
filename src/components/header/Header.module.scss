@@ -1,0 +1,47 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	padding: 52px 55px;
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.container {
+	margin-left: 17px;
+}
+
+.title {
+	font-size: 24px;
+	line-height: 29px;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+	color: #181818;
+}
+
+.sub {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 19px;
+	color: #7b7b7b;
+}
+
+.button {
+	display: flex;
+	justify-content: space-between;
+	background: #fe5f1e;
+	border-radius: 30px;
+	border: 1px solid #fe5f1e;
+	padding: 15px 23px 19px;
+}
+
+.totalPrice {
+	color: #fff;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    padding-right: 13px;
+}

@@ -1,6 +1,35 @@
-Button {
-  background: #fe5f1e;
-  border-radius: 30px;
-  color: #ffff;
-  padding: 18px 16px;
+.default {
+	background: #ffffff;
+	color: #eb5a1e;
+	border: 1px solid #eb5a1e;
+	border-radius: 30px;
+	padding: 11px 14px;
+	cursor: pointer;
+}
+
+
+.default:hover {
+	transition: all 0.3s;
+	color: white;
+	background-color: #eb5a1e;
+	.plus path {
+		fill: #fff;
+		margin-right: 7px;
+		transition: all 0.3s;
+	}
+}
+
+.span {
+	padding-left: 7px;
+	font-size: 14px;
+	line-height: 19px;
+	font-weight: 700;
+}
+
+.primary {
+	background: #fe5f1e;
+	border: 1px solid #fe5f1e;
+	border-radius: 30px;
+	padding: 11px 14px;
+	color: #fff;
 }
