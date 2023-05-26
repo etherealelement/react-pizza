@@ -4,6 +4,8 @@ import { Categories } from "./components/categories/Categories";
 import { Header } from "./components/header/Header";
 import { Sort } from "./components/sort/Sort";
 
+import Cart1 from "./assets/cartItems/cart-1.png";
+
 function App() {
 	return (
 		<>
@@ -20,7 +22,7 @@ function App() {
 					<Sort></Sort>
 				</div>
 				<h2>Все пиццы</h2>
-				<CartItem image={"./assets/cartItems/cart-1.png"} price={344}>Чизбургер-пицца</CartItem>
+				<CartItem image={Cart1} price={344}>Чизбургер-пицца</CartItem>
 			</div>
 		</>
 	);
