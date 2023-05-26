@@ -1,6 +1,7 @@
 import "./App.scss";
 import { Categories } from "./components/categories/Categories";
 import { Header } from "./components/header/Header";
+import { Sort } from "./components/sort/Sort";
 
 function App() {
 	return (
@@ -13,7 +14,10 @@ function App() {
 				REACT PIZZA
 			</Header>
 			<div className="container">
-				<Categories></Categories>
+				<div className="filter-wrapper">
+					<Categories></Categories>
+					<Sort></Sort>
+				</div>
 			</div>
 		</>
 	);
