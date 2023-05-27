@@ -5,8 +5,9 @@ import { Button } from "../ui/button/Button";
 
 export const CartItem: FC<CartItemProps> = ({
 	children,
-	cartParams,
+	cartDescr,
 	image,
+	cartSize,
 	price,
 	className,
 	...props
@@ -19,14 +20,9 @@ export const CartItem: FC<CartItemProps> = ({
 					<h2 className={styles.cartItemTitle}>{children}</h2>
 					<div className={styles.cartItemSelector}>
 						<ul>
-							<li className={styles.active}>тонкое</li>
-							<li>традиционное</li>
+							{cartDescr.map((item, index)=> <li key={index}>{item}</li>)}
 						</ul>
-						<ul>
-							<li className={styles.active}>26 см.</li>
-							<li>30 см.</li>
-							<li>40 см.</li>
-						</ul>
+						<ul>{cartSize.map((item, index)=> <li key={index}>{item} см.</li>)}</ul>
 					</div>
 					<div className={styles.cartItemPriceBLock}>
 						<b className={styles.cartItemPrice}>от {price} ₽</b>
