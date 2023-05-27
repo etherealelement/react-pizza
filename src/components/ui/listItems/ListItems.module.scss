@@ -1,31 +1,32 @@
-.li {
-    text-align: center;
-	list-style: none;
-	padding: 13px 36px;
+
+.active {
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 19px;
+	text-align: center;
+	letter-spacing: 0.015em;
+	color: #ffffff;
+	background: #282828;
+	border-radius: 30px;
+	padding: 13px 16px;
 	cursor: pointer;
-	transition: all .3s;
-}
-
-.li:hover {
-	background: #636161;
-	color: #fff;
 }
 
 .default {
-	background: #f9f9f9;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	letter-spacing: 0.015em;
+	color: #282828;
+	background:  #F9F9F9;
 	border-radius: 30px;
-	color: #2c2c2c;
-}
-
-.active {
-	background: #282828;
-	border-radius: 30px;
-    color: #f9f9f9;
-}
-
-.liItem {
+	padding: 13px 16px;
+	cursor: pointer;
+	transition: all .3s;
+	margin-left: 10px;
 	margin-right: 10px;
+	&:hover {
+		background-color: #cbc8c8;
+	}
 }
