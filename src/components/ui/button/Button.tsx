@@ -25,7 +25,7 @@ export const Button: FC<ButtonProps> = ({
 				{...props}
 				onClick={() => setPlus(true)}
 			>
-			{plus ? <span className={styles.span}>Добавлено в корзину</span> : <><Plus className={styles.plus}></Plus><span className={styles.span}>{children}</span></>}
+			{plus ? <span className={styles.span}>Добавлено !</span> : <><Plus className={styles.plus}></Plus><span className={styles.span}>{children}</span></>}
 			</button>
 		</>
 	);

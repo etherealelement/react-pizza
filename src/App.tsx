@@ -21,7 +21,7 @@ function App() {
 					<Categories></Categories>
 					<Sort></Sort>
 				</div>
-				<h2>Все пиццы</h2>
+				<h2 className="cart-title">Все пиццы</h2>
 				<CartItem image={Cart1} price={344}>Чизбургер-пицца</CartItem>
 			</div>
 		</>

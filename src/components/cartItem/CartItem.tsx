@@ -21,15 +21,15 @@ export const CartItem: FC<CartItemProps> = ({
 						<ul>
 							<li className={styles.active}>тонкое</li>
 							<li>традиционное</li>
-							<ul>
-								<li>26 см.</li>
-								<li>30 см.</li>
-								<li>40 см.</li>
-							</ul>
+						</ul>
+						<ul>
+							<li className={styles.active}>26 см.</li>
+							<li>30 см.</li>
+							<li>40 см.</li>
 						</ul>
 					</div>
-					<div className={styles.priceBLock}>
-						<b className={styles.price}>от {price} ₽</b>
+					<div className={styles.cartItemPriceBLock}>
+						<b className={styles.cartItemPrice}>от {price} ₽</b>
 						<Button isPlus={true} variant={"default"}>
 							Добавить
 						</Button>

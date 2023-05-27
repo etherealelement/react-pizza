@@ -7,10 +7,6 @@
 	&:hover {
 		transform: scale(1.03);
 	}
-	&Wrapper {
-		// display: flex;
-		// justify-content: center;
-	}
 	&Title {
 		font-size: 20px;
 		font-weight: 900;
@@ -18,15 +14,14 @@
 		margin-bottom: 20px;
 	}
 	&Selector {
-		display: flex;
 		background-color: #f3f3f3;
 		border-radius: 10px;
-		flex-direction: column;
 		padding: 6px;
+		max-width: 280px;
 		ul {
 			display: flex;
-			flex: 1;   
-            justify-content: space-between;
+			justify-content: space-between;
+			flex: 1;
 			&:first-of-type {
 				margin-bottom: 6px;
 			}
@@ -36,6 +31,13 @@
 				cursor: pointer;
 				font-weight: 600;
 				font-size: 14px;
+				transition: all .3s ease-in-out;
+				&:hover {
+					background: #ffffff;
+					box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+					border-radius: 5px;
+					cursor: pointer;
+				}
 				&.active {
 					background: #ffffff;
 					box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
@@ -44,5 +46,17 @@
 				}
 			}
 		}
+	}
+	&PriceBLock {
+		margin-top: 17px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&Price {
+		font-weight: 700;
+		font-size: 22px;
+		line-height: 27px;
+		letter-spacing: 0.015em;
 	}
 }
