@@ -11,7 +11,7 @@ export const Button: FC<ButtonProps> = ({
 	isPlus,
 	...props
 }): JSX.Element => {
-	const [plus, setPlus] = useState(0);
+	const [itemCount, setItemCount] = useState(0);
 
 	return (
 		<>
@@ -21,15 +21,13 @@ export const Button: FC<ButtonProps> = ({
 					[styles.actived]: variant === "actived",
 				})}
 				{...props}
-				onClick={() => setPlus(plus + 1)}
+				onClick={() => setItemCount(itemCount + 1)}
 			>
-				<>
-					<Plus className={styles.plus}></Plus>
-					<span className={styles.span}>
-						{children}{" "}
-						{plus === 0 ? null : <span className={styles.cartCounter}>{plus}</span>}
-					</span>
-				</>
+				
+					<Plus className={styles.plusName}></Plus>
+					{children}
+				
+				<span className={styles.itemSpan}>{itemCount}</span>
 			</button>
 		</>
 	);
