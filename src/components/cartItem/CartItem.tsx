@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./CartItem.module.scss";
 import { CartItemProps } from "./CartItem.props";
 import { Button } from "../ui/button/Button";
@@ -12,6 +12,8 @@ export const CartItem: FC<CartItemProps> = ({
 	className,
 	...props
 }: CartItemProps): JSX.Element => {
+	const [activeType, setType] = useState();
+
 	return (
 		<>
 			<div className={styles.cartItem}>
@@ -20,9 +22,25 @@ export const CartItem: FC<CartItemProps> = ({
 					<h2 className={styles.cartItemTitle}>{children}</h2>
 					<div className={styles.cartItemSelector}>
 						<ul>
-							{cartDescr.map((item, index)=> <li key={index}>{item}</li>)}
+							{cartDescr.map((item, index:number) => (
+								<li
+									onClick={() => setType(index)}
+									key={index}
+									className={
+										activeType === index
+											? styles.active
+											: ""
+									}
+								>
+									{item}
+								</li>
+							))}
 						</ul>
-						<ul>{cartSize.map((item, index)=> <li key={index}>{item} см.</li>)}</ul>
+						<ul>
+							{cartSize.map((item, index) => (
+								<li key={index}>{item} см.</li>
+							))}
+						</ul>
 					</div>
 					<div className={styles.cartItemPriceBLock}>
 						<b className={styles.cartItemPrice}>от {price} ₽</b>

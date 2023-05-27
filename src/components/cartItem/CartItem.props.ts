@@ -6,5 +6,7 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     children: ReactNode;
     cartDescr: string[];
     cartSize: number[];
-    price: number;
+    price?: number;
+    activeType?: number;
+    itemId?: number;
 } 

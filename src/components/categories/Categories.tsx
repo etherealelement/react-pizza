@@ -9,11 +9,7 @@ interface IulArray {
 }
 
 export const Categories: FC = (): JSX.Element => {
-	const [activeIndex, setIndex] = useState(0);
 
-	const setCategory = (id: number) => {
-		setIndex(id);
-	};
 
 	const ulArray: IulArray[] = [
 		{
@@ -50,11 +46,10 @@ export const Categories: FC = (): JSX.Element => {
 	return (
 		<ul className={styles.listContainer}>
 			{ulArray.map((item: any) => (
-				<ListItems key={item.id} 
-                onClick={()=> setCategory(item.id)}
-                state={item.id}
-                activeId={activeIndex} 
-                >
+				<ListItems
+					key={item.id}
+					state={item.id}
+				>
 					{item.name}
 				</ListItems>
 			))}

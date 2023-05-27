@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./cartList.module.scss";
 import { ListItems } from "../ui/listItems/ListItems";
 import { CartItem } from "../cartItem/CartItem";
@@ -14,7 +14,7 @@ import Item8 from "../../assets/cartItems/cart-8.png";
 
 const productArray = [
 	{
-		id: 1,
+		id: 0,
 		image: Item1,
 		title: "Чизбургер-пицца",
 		cartParamsTitle: ["тонкое", "традиционное"],
@@ -22,7 +22,7 @@ const productArray = [
 		price: 395,
 	},
 	{
-		id: 2,
+		id: 1,
 		image: Item2,
 		title: "Сырная",
 		cartParamsTitle: ["тонкое", "традиционное"],
@@ -30,7 +30,7 @@ const productArray = [
 		price: 450,
 	},
 	{
-		id: 3,
+		id: 2,
 		image: Item3,
 		title: "Креветки по-азиатски",
 		cartParamsTitle: ["тонкое", "традиционное"],
@@ -38,7 +38,7 @@ const productArray = [
 		price: 450,
 	},
 	{
-		id: 4,
+		id: 3,
 		image: Item4,
 		title: "Сырный цыпленок",
 		cartParamsTitle: ["тонкое", "традиционное"],
@@ -46,7 +46,7 @@ const productArray = [
 		price: 385,
 	},
 	{
-		id: 5,
+		id: 4,
 		image: Item5,
 		title: "Чизбургер-пицца",
 		cartParamsTitle: ["тонкое", "традиционное"],
@@ -56,16 +56,19 @@ const productArray = [
 ];
 
 export const CartList: FC = (): JSX.Element => {
+	
 	return (
 		<div className={styles.gridInner}>
 			{productArray.map((item: any) => {
 				return (
 					<CartItem
+						
 						cartSize={item.cartParamsSize}
 						cartDescr={item.cartParamsTitle}
 						image={item.image}
 						price={item.price}
 						key={item.id}
+						itemId={item.id}
 					>
 						{item.title}
 					</CartItem>
