@@ -7,11 +7,14 @@
 	cursor: pointer;
 }
 
-
 .default:hover {
 	transition: all 0.3s;
 	color: white;
 	background-color: #eb5a1e;
+	.cartCounter {
+		background-color: #fff;
+		color: #eb5a1e;
+	}
 	.plus path {
 		fill: #fff;
 		margin-right: 7px;
@@ -32,4 +35,15 @@
 	border-radius: 30px;
 	padding: 11px 14px;
 	color: #fff;
+}
+
+.cartCounter {
+	padding: 3px 7px;
+	border-radius: 50%;
+	background: #eb5a1e;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 16px;
+	color: #ffffff;
+	transition: all .3s;
 }
