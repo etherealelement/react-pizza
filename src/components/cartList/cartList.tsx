@@ -8,6 +8,8 @@ import { CartListProps } from "./cartList.props";
 import { SkeletonLoader } from "../../helpers/skeleton";
 
 export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
+	// isLoadingFlag
+	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
 	const [productArray, setProductArray] = useState<number[]>([]);
 	useEffect(() => {
@@ -15,6 +17,7 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 			try {
 				const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
 				setProductArray(data);
+				setIsLoading(false)
 				console.log(productArray);
 			} catch (error) {
 				alert("Не удалось получить данные, попробуйте позже.");
@@ -25,7 +28,8 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 
 	return (
 		<div className={styles.gridInner}>
-			{productArray.map((item: any, id) => {
+			{isLoading ? [...new Array(9)].map((_,index) => <SkeletonLoader key={index}></SkeletonLoader>) : 
+			productArray.map((item: any, index) => {
 				return (
 					<CartItem
 						key={item.id}
@@ -39,7 +43,8 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 						{item.title}
 					</CartItem>
 				);
-			})}
+			})
+			}
 		</div>
 	);
 };
