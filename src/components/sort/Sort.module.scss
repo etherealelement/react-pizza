@@ -6,6 +6,10 @@
     padding-bottom: 10px;
 }
 
+.popupHidden { 
+	display: none;
+}
+
 .popup li {
 	padding-top: 10px;
 	padding-bottom: 11px;
@@ -33,4 +37,5 @@
 	letter-spacing: 0.015em;
 	color: #fe5f1e;
 	border-bottom: 1px dashed #fe5f1e;
+	cursor: pointer;
 }

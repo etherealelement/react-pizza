@@ -1,8 +1,10 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./Sort.module.scss";
 import {ReactComponent as ArrowIcon} from "../../assets/arrow-top.svg";
 
 export const Sort: FC = (): JSX.Element => {
+    const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
+
 	return (
 		<>
 			<div className={styles.wrapper}>
@@ -10,15 +12,17 @@ export const Sort: FC = (): JSX.Element => {
             <b className={styles.b}>
                 Сортировка по:
             </b>
-            <a href="#" className={styles.link}>
+            <span
+            onClick={() => setVisiblePopup(!visiblePopup)} 
+            className={styles.link}>
                 Популярности
-            </a>
+            </span>
             
-            <ul className={styles.popup}>
+            {visiblePopup && <ul className={styles.popup}>
                 <li>по популярности</li>
                 <li>по цене</li>
                 <li>по алфавиту</li>
-            </ul>
+            </ul>}
             </div>
 		</>
 	);
