@@ -14,16 +14,16 @@ export const CartItem: FC<CartItemProps> = ({
 }: CartItemProps): JSX.Element => {
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
-
+	const cartType:string[] = ["тонкое", "традиционное"]
 	return (
 		<>
 			<div className={styles.cartItem}>
 				<div className={styles.cartItemWrapper}>
-					<img src={image} alt="cart-image" />
+					<img src={image} className={styles.cartItemImage} alt="cart-image" />
 					<h2 className={styles.cartItemTitle}>{children}</h2>
 					<div className={styles.cartItemSelector}>
 						<ul>
-							{cartDescr.map((item, index) => (
+							{cartDescr.map((item: any, index) => (
 								<li
 									onClick={() => setType(index)}
 									key={index}
@@ -33,7 +33,7 @@ export const CartItem: FC<CartItemProps> = ({
 											: ""
 									}
 								>
-									{item}
+									{cartType[item]}
 								</li>
 							))}
 						</ul>

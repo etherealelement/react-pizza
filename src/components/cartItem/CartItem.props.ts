@@ -9,4 +9,6 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     price?: number;
     activeType?: number;
     itemId?: number;
+    category?: number;
+    rating?: number;
 } 

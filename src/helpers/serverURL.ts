@@ -1,0 +1,1 @@
+export const PRODUCT_DATA = "https://64732640d784bccb4a3c4d81.mockapi.io/items";
