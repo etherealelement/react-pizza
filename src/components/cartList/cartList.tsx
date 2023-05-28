@@ -11,9 +11,13 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 	const [productArray, setProductArray] = useState<number[]>([]);
 	useEffect(() => {
 		const LoadData = async () => {
-			const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
+			try {
+				const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
 			setProductArray(data);
 			console.log(productArray);
+			} catch (error) {
+				alert("Не удалось получить данные, попробуйте еще раз")
+			}
 		};
 		LoadData();
 	}, []);
@@ -23,7 +27,7 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 			{productArray.map((item: any, id) => {
 				return (
 					<CartItem
-					key={item.id}
+						key={item.id}
 						image={item.imageUrl}
 						cartDescr={item.types}
 						cartSize={item.sizes}
