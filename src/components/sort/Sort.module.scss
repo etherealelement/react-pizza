@@ -1,11 +1,27 @@
+.wrapper {
+	display: flex;
+}
+
 .span {
 	position: relative;
+	display: inline-block;
 	font-size: 14px;
 	line-height: 17px;
 	letter-spacing: 0.015em;
 	color: #fe5f1e;
 	border-bottom: 1px dashed #fe5f1e;
 	cursor: pointer;
+}
+
+.active { 
+	background: rgba(243, 76, 10, 0.1);
+	color: #fe5f1e;
+	font-weight: bold;
+}
+
+.sortInner { 
+	display: flex;
+	align-items: center;
 }
 
 .popup {

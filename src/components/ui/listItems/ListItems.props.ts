@@ -7,4 +7,5 @@ export interface ListItemsProps extends DetailedHTMLProps<HTMLAttributes<HTMLLIE
     state: number;
     activeId?: number;
     index?: number;
+    stateActive?: number;
 }

@@ -8,47 +8,51 @@ interface IulArray {
 	id: number;
 }
 
+const ulArray: IulArray[] = [
+	{
+		name: "Все",
+		state: "active",
+		id: 0,
+	},
+	{
+		name: "Мясные",
+		state: "default",
+		id: 1,
+	},
+	{
+		name: "Вегетарианская",
+		state: "default",
+		id: 2,
+	},
+	{
+		name: "Гриль",
+		state: "default",
+		id: 3,
+	},
+	{
+		name: "Острые",
+		state: "default",
+		id: 4,
+	},
+	{
+		name: "Закрытые",
+		state: "default",
+		id: 5,
+	},
+];
+
 export const Categories: FC = (): JSX.Element => {
+	const [active, setActive] = useState(0);
 
-
-	const ulArray: IulArray[] = [
-		{
-			name: "Все",
-			state: "active",
-			id: 1,
-		},
-		{
-			name: "Мясные",
-			state: "default",
-			id: 2,
-		},
-		{
-			name: "Вегетарианская",
-			state: "default",
-			id: 3,
-		},
-		{
-			name: "Гриль",
-			state: "default",
-			id: 4,
-		},
-		{
-			name: "Острые",
-			state: "default",
-			id: 5,
-		},
-		{
-			name: "Закрытые",
-			state: "default",
-			id: 6,
-		},
-	];
 	return (
 		<ul className={styles.listContainer}>
-			{ulArray.map((item: any) => (
+			{ulArray.map((item: any, index) => (
 				<ListItems
+					onClick={() => setActive(index)}
 					key={item.id}
-					state={item.id}
+					activeId={index}
+					index={active}
+					state = {item.state}
 				>
 					{item.name}
 				</ListItems>
