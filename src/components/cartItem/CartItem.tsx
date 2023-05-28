@@ -12,7 +12,9 @@ export const CartItem: FC<CartItemProps> = ({
 	className,
 	...props
 }: CartItemProps): JSX.Element => {
-	const [activeType, setType] = useState();
+	const [activeType, setType] = useState(0);
+	const [activeBlock, setActive] = useState(0 )
+
 
 	return (
 		<>
@@ -22,7 +24,7 @@ export const CartItem: FC<CartItemProps> = ({
 					<h2 className={styles.cartItemTitle}>{children}</h2>
 					<div className={styles.cartItemSelector}>
 						<ul>
-							{cartDescr.map((item, index:number) => (
+							{cartDescr.map((item, index) => (
 								<li
 									onClick={() => setType(index)}
 									key={index}
@@ -38,7 +40,12 @@ export const CartItem: FC<CartItemProps> = ({
 						</ul>
 						<ul>
 							{cartSize.map((item, index) => (
-								<li key={index}>{item} см.</li>
+								<li 
+								onClick={() => setActive(index)}
+								className={activeBlock === index
+									? styles.active
+									: ""}
+								key={index}>{item} см.</li>
 							))}
 						</ul>
 					</div>
