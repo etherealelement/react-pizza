@@ -5,6 +5,7 @@ import { CartItem } from "../cartItem/CartItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { CartListProps } from "./cartList.props";
+import { SkeletonLoader } from "../../helpers/skeleton";
 
 export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 	//  dataFetching
@@ -13,10 +14,10 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 		const LoadData = async () => {
 			try {
 				const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
-			setProductArray(data);
-			console.log(productArray);
+				setProductArray(data);
+				console.log(productArray);
 			} catch (error) {
-				alert("Не удалось получить данные, попробуйте еще раз")
+				alert("Не удалось получить данные, попробуйте позже.");
 			}
 		};
 		LoadData();
