@@ -14,12 +14,12 @@ export const Sort: FC = (): JSX.Element => {
             </b>
             <span
             onClick={() => setVisiblePopup(!visiblePopup)} 
-            className={styles.link}>
+            className={styles.span}>
                 Популярности
             </span>
             
             {visiblePopup && <ul className={styles.popup}>
-                <li>по популярности</li>
+                <li>популярности</li>
                 <li>по цене</li>
                 <li>по алфавиту</li>
             </ul>}

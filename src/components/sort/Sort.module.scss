@@ -1,12 +1,26 @@
+.span {
+	position: relative;
+	font-size: 14px;
+	line-height: 17px;
+	letter-spacing: 0.015em;
+	color: #fe5f1e;
+	border-bottom: 1px dashed #fe5f1e;
+	cursor: pointer;
+}
+
 .popup {
+	position: absolute;
+	z-index: 1;
+	transform: translateX(120px) translateY(15px);
+	width: 132px;
 	background: #ffffff;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
 	border-radius: 10px;
-    padding-top: 13px;
-    padding-bottom: 10px;
+	padding-top: 13px;
+	padding-bottom: 10px;
 }
 
-.popupHidden { 
+.popupHidden {
 	display: none;
 }
 
@@ -17,25 +31,16 @@
 	font-size: 14px;
 	line-height: 17px;
 	letter-spacing: 0.015em;
-    cursor: pointer;
-    transition: all .3s;
+	cursor: pointer;
+	transition: all 0.3s;
 }
 
 .popup li:hover {
-    background: rgba(254, 95, 30, 0.05);
-    color: #FE5F1E;
+	background: rgba(254, 95, 30, 0.05);
+	color: #fe5f1e;
 }
 
 .b {
 	margin-left: 7px;
 	margin-right: 7px;
-}
-
-.link {
-	font-size: 14px;
-	line-height: 17px;
-	letter-spacing: 0.015em;
-	color: #fe5f1e;
-	border-bottom: 1px dashed #fe5f1e;
-	cursor: pointer;
 }
