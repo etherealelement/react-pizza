@@ -20,12 +20,14 @@ export const Sort: FC = (): JSX.Element => {
 					<ArrowIcon></ArrowIcon>
 					<b className={styles.b}>Сортировка по:</b>
 				</div>
-				<span
-					onClick={() => setVisiblePopup(!visiblePopup)}
-					className={styles.span}
-				>
-					{sortName}
-				</span>
+				<div className={styles.sortContainer}>
+					<span
+						onClick={() => setVisiblePopup(!visiblePopup)}
+						className={styles.span}
+					>
+						{sortName}
+					</span>
+				</div>
 
 				{visiblePopup && (
 					<ul className={styles.popup}>
