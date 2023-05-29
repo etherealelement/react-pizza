@@ -17,7 +17,7 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 			try {
 				const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
 				setProductArray(data);
-				setIsLoading(false)
+				setIsLoading(false);
 				console.log(productArray);
 			} catch (error) {
 				alert("Не удалось получить данные, попробуйте позже.");
@@ -28,23 +28,28 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 
 	return (
 		<div className={styles.gridInner}>
-			{isLoading ? [...new Array(9)].map((_,index) => <SkeletonLoader key={index}></SkeletonLoader>) : 
-			productArray.map((item: any, index) => {
-				return (
-					<CartItem
-						key={item.id}
-						image={item.imageUrl}
-						cartDescr={item.types}
-						cartSize={item.sizes}
-						price={item.price}
-						category={item.category}
-						rating={item.rating}
-					>
-						{item.title}
-					</CartItem>
-				);
-			})
-			}
+			{isLoading
+				? [...new Array(9)].map((_, index) => (
+						<SkeletonLoader
+							key={index}
+							className={styles.skeleton}
+						></SkeletonLoader>
+				  ))
+				: productArray.map((item: any, index) => {
+						return (
+							<CartItem
+								key={item.id}
+								image={item.imageUrl}
+								cartDescr={item.types}
+								cartSize={item.sizes}
+								price={item.price}
+								category={item.category}
+								rating={item.rating}
+							>
+								{item.title}
+							</CartItem>
+						);
+				  })}
 		</div>
 	);
 };
