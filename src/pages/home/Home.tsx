@@ -9,22 +9,14 @@ import { NotFound } from "../../components/notfound/NotFound";
 export const Home: FC = (): JSX.Element => {
 	return (
 		<>
-			<Header
-				totalProduct={3}
-				subtitle={"самая вкусная пицца во вселенной"}
-				totalPrice={520}
-			>
-				REACT PIZZA
-			</Header>
-
 			<div className={styles.container}>
 				<div className={styles.filterWrapper}>
 					<Categories></Categories>
 					<Sort></Sort>
 				</div>
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
-				<NotFound></NotFound>					
-				{/* <CartList></CartList> */}
+								
+				<CartList></CartList>
 			</div>
 		</>
 	);
