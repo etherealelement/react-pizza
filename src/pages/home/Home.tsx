@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Header } from "../../components/header/Header";
 import { Categories } from "../../components/categories/Categories";
 import { Sort } from "../../components/sort/Sort";
-import { CartList } from "../../components/cartList/cartList";
+import { CartList } from "../../components/cardList/cardList";
 import styles from "./Home.module.scss";
 import { NotFound } from "../../components/notfound/NotFound";
 

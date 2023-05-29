@@ -1,13 +1,12 @@
 import { FC, useState, useEffect } from "react";
-import styles from "./cartList.module.scss";
+import styles from "./cardList.module.scss";
 import { ListItems } from "../ui/listItems/ListItems";
-import { CartItem } from "../cartItem/CartItem";
+import { CartItem } from "../cardItem/CardItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
-import { CartListProps } from "./cartList.props";
 import { SkeletonLoader } from "../../helpers/skeleton";
 
-export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
+export const CartList: FC = ({ ...props }): JSX.Element => {
 	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
@@ -15,7 +14,7 @@ export const CartList: FC<CartListProps> = ({ ...props }): JSX.Element => {
 	useEffect(() => {
 		const LoadData = async () => {
 			try {
-				const { data } = await axios.get<CartListProps>(PRODUCT_DATA);
+				const { data } = await axios.get(PRODUCT_DATA);
 				setProductArray(data);
 				setIsLoading(false);
 				console.log(productArray);

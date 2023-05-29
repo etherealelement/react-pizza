@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
-import styles from "./CartItem.module.scss";
-import { CartItemProps } from "./CartItem.props";
+import styles from "./CardItem.module.scss";
+import { CartItemProps } from "./CardItem.props";
 import { Button } from "../ui/button/Button";
 
 export const CartItem: FC<CartItemProps> = ({
