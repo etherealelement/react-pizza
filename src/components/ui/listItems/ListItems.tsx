@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import styles from "./ListItems.module.scss";
 import { ListItemsProps } from "./ListItems.props";
+import cn from "classnames";
 
 
 export const ListItems: FC<ListItemsProps> = ({
@@ -17,7 +18,10 @@ export const ListItems: FC<ListItemsProps> = ({
 
 	return (
 		<li
-			className={activeId === index ? styles.active : styles.default}
+			className={cn(styles.listItem, className, {
+				[styles.listItemActive]: activeId === index,
+				[styles.listItemDefault]: activeId !== index,
+			})}
 			{...props}
 		>
 			{children}
