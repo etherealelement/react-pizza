@@ -1,0 +1,90 @@
+.cartItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 61px;
+	&Block {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		span {
+			margin-left: 15px;
+		}
+		&Title {
+			font-weight: 700;
+			font-size: 22px;
+			line-height: 27px;
+			letter-spacing: 0.01em;
+		}
+		&Descr {
+			font-size: 18px;
+			line-height: 22px;
+			letter-spacing: 0.01em;
+			color: #8d8d8d;
+		}
+		&Img {
+			width: 80px;
+		}
+	}
+	&Counter {
+		display: flex;
+		flex-basis: 380px;
+		justify-content: space-between;
+		align-items: center;
+		span {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 12px;
+			font-size: 22px;
+			line-height: 27px;
+			font-weight: bold;
+			/* identical to box height */
+			letter-spacing: 0.01em;
+			color: #000000;
+			button {
+				background: none;
+				border: 2px solid #fe5f1e;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 11px;
+				width: 32px;
+				transition: all 0.3s ease-in-out;
+				&:hover {
+					fill: white;
+					background: #fe5f1e;
+				}
+				&:hover svg{
+					fill: white;
+				}
+			}
+		}
+		button {
+			background: none;
+			border: 2px solid #fe5f1e;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 11px;
+			width: 32px;
+			transition: all .3s ease-in-out;
+			&:hover {
+				fill: white;
+				background: #fe5f1e;
+			}
+			&:hover svg{
+				fill: white;
+			}
+		}
+	}
+	&Price {
+		font-size: 22px;
+		line-height: 27px;
+		font-weight: bold;
+		letter-spacing: 0.01em;
+		color: #000000;
+	}
+}
