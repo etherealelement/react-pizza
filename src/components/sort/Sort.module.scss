@@ -29,6 +29,7 @@
 .sortInner { 
 	display: flex;
 	align-items: center;
+	
 }
 
 .popup {
@@ -78,10 +79,11 @@
 .b {
 	margin-left: 7px;
 	margin-right: 7px;
-	@media (max-width: 1000px) {
+	@media (max-width: 1200px) {
 		font-size: 14px;
 	}
 	@media (max-width: 960px) {
 		font-size: 10px;
+		
 	}
 }
