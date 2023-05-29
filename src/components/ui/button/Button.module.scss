@@ -8,12 +8,12 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	transition: all .3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 	font-weight: 700;
 	font-size: 16px;
 	line-height: 19px;
 	&:hover {
-		background: #eb5a1e; 
+		background: #eb5a1e;
 		color: white;
 		.plusName {
 			fill: #ffffff;
@@ -21,11 +21,10 @@
 		.itemSpan {
 			background: #ffffff;
 			color: #eb5a1e;
-			transition: all .3s ease-in-out;
+			transition: all 0.3s ease-in-out;
 		}
 	}
-	
-	
+
 	.plusName {
 		margin-right: 5px;
 	}
@@ -40,5 +39,23 @@
 		background-color: #eb5a1e;
 		color: #ffffff;
 		border-radius: 50%;
+	}
+}
+
+.black {
+	background-color: #282828;
+	padding: 13px 16px;
+	color: #ffffff;
+	border-radius: 30px;
+	font-size: 16px;
+	line-height: 19px;
+	text-align: center;
+	letter-spacing: 0.015em;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+	&:hover{ 
+		background-color: #fff;
+		color: #282828;
+		font-size: 16px;
 	}
 }

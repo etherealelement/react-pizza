@@ -4,6 +4,7 @@ import { Categories } from "../../components/categories/Categories";
 import { Sort } from "../../components/sort/Sort";
 import { CartList } from "../../components/cartList/cartList";
 import styles from "./Home.module.scss";
+import { NotFound } from "../../components/notfound/NotFound";
 
 export const Home: FC = (): JSX.Element => {
 	return (
@@ -22,7 +23,8 @@ export const Home: FC = (): JSX.Element => {
 					<Sort></Sort>
 				</div>
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
-				<CartList></CartList>
+				<NotFound></NotFound>					
+				{/* <CartList></CartList> */}
 			</div>
 		</>
 	);

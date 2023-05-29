@@ -9,6 +9,7 @@ export const Button: FC<ButtonProps> = ({
 	className,
 	children,
 	isPlus,
+	isCount = true,
 	...props
 }): JSX.Element => {
 	const [itemCount, setItemCount] = useState(0);
@@ -18,16 +19,16 @@ export const Button: FC<ButtonProps> = ({
 			<button
 				className={cn(styles.button, className, {
 					[styles.default]: variant === "default",
-					[styles.actived]: variant === "actived",
+					[styles.black]: variant === "black",
 				})}
 				{...props}
 				onClick={() => setItemCount(itemCount + 1)}
 			>
 				
-					<Plus className={styles.plusName}></Plus>
+					{isPlus === true && <Plus className={styles.plusName}></Plus>}
 					{children}
 				
-				<span className={styles.itemSpan}>{itemCount}</span>
+				{isCount && <span className={styles.itemSpan}>{itemCount}</span>}
 			</button>
 		</>
 	);

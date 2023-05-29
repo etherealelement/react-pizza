@@ -1,0 +1,15 @@
+.errorBlock { 
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    &Tittle {
+        font-size: 26px;
+        line-height: 39px;
+    }
+    &Span {
+        font-size: 70px;
+    }
+}
