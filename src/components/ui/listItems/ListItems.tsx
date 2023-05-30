@@ -13,7 +13,7 @@ export const ListItems: FC<ListItemsProps> = ({
 	stateActive,
 	...props
 }): JSX.Element => {
-	console.log(activeId);
+
 	
 
 	return (

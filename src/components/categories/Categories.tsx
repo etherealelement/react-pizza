@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import styles from "./Categories.module.scss";
 import { ListItems } from "../ui/listItems/ListItems";
+import { CategoriesProps } from "./Categories.props";
 
 interface IulArray {
 	name: string;
@@ -41,18 +42,21 @@ const ulArray: IulArray[] = [
 	},
 ];
 
-export const Categories: FC = (): JSX.Element => {
-	const [active, setActive] = useState(0);
+export const Categories: FC<CategoriesProps> = ({
+	value,
+	onClickCategory,
+	...props
+}: CategoriesProps): JSX.Element => {
 
 	return (
 		<ul className={styles.listContainer}>
 			{ulArray.map((item: any, index) => (
 				<ListItems
-					onClick={() => setActive(index)}
+					onClick={() => onClickCategory(index)}
 					key={item.id}
-					activeId={index}
-					index={active}
-					state = {item.state}
+					activeId={value}
+					index={index}
+					state={item.state}
 				>
 					{item.name}
 				</ListItems>

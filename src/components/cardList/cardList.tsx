@@ -5,25 +5,28 @@ import { CartItem } from "../cardItem/CardItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { SkeletonLoader } from "../../helpers/skeleton";
+import { CardListProps } from "./cardList.props";
 
-export const CartList: FC = ({ ...props }): JSX.Element => {
+
+export const CartList: FC<CardListProps> = ({ categoryId }: CardListProps): JSX.Element => {
 	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
 	const [productArray, setProductArray] = useState<number[]>([]);
 	useEffect(() => {
+		setIsLoading(true);
 		const LoadData = async () => {
 			try {
-				const { data } = await axios.get(PRODUCT_DATA);
+				const { data } = await axios.get(PRODUCT_DATA + categoryId);
 				setProductArray(data);
 				setIsLoading(false);
-				console.log(productArray);
 			} catch (error) {
 				alert("Не удалось получить данные, попробуйте позже.");
 			}
 		};
 		LoadData();
-	}, []);
+		window.scrollTo(0, 0);
+	}, [categoryId]);
 
 	return (
 		<div className={styles.gridInner}>

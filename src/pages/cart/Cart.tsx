@@ -6,6 +6,7 @@ import { CardItem } from "../../components/cartItem/cartItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { ReactComponent as ArrowGhost } from "../../assets/ghost-arrow.svg";
+import {Link} from "react-router-dom";
 
 
 export const Cart: FC = (): JSX.Element => {
@@ -53,15 +54,25 @@ export const Cart: FC = (): JSX.Element => {
 					</ul>
 				</div>
 				<div className={styles.cartTotal}>
-					<span className={styles.cartTotalProduct}>Всего пицц: <span>{product.length} шт.</span></span>
-					<span className={styles.cartTotalPrice}>Сумма заказа: <span>900 ₽</span></span>
+					<span className={styles.cartTotalProduct}>
+						Всего пицц: <span>{product.length} шт.</span>
+					</span>
+					<span className={styles.cartTotalPrice}>
+						Сумма заказа: <span>900 ₽</span>
+					</span>
 				</div>
 				<div className={styles.blockButton}>
-					<button className={styles.blockButtonBack}>
-					<ArrowGhost className={styles.blockButtonBackSvg}></ArrowGhost>
-						Вернуться назад
+					<Link to="/">
+						<button className={styles.blockButtonBack}>
+							<ArrowGhost
+								className={styles.blockButtonBackSvg}
+							></ArrowGhost>
+							Вернуться назад
+						</button>
+					</Link>
+					<button className={styles.blockButtonPayment}>
+						Оплатить сейчас
 					</button>
-					<button className={styles.blockButtonPayment}>Оплатить сейчас</button>
 				</div>
 			</div>
 		</div>

@@ -40,8 +40,13 @@
 	line-height: 19px;
 	color: #b6b6b6;
 	cursor: pointer;
+	transition: all 0.3s;
 	span {
 		margin-right: 10px;
+		transition: all 0.3s;
+	}
+	&:hover {
+		color: #868080;
 	}
 }
 
@@ -107,11 +112,11 @@
 		border: none;
 		color: #ffffff;
 		padding: 18px 18px;
-		transition: all .3s;
+		transition: all 0.3s;
 		border: 1px solid #fe5f1e;
-		&:hover { 
+		&:hover {
 			border: 1px solid #fe5f1e;
-			color:#fe5f1e;
+			color: #fe5f1e;
 			background: #fff;
 		}
 	}
