@@ -5,6 +5,8 @@ import { ReactComponent as TrashIcon } from "../../assets/trash-image.svg";
 import { CardItem } from "../../components/cartItem/cartItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
+import { ReactComponent as ArrowGhost } from "../../assets/ghost-arrow.svg";
+
 
 export const Cart: FC = (): JSX.Element => {
 	// dataFetching
@@ -12,10 +14,10 @@ export const Cart: FC = (): JSX.Element => {
 
 	useEffect(() => {
 		const loadData = async () => {
-			const {data} = await axios.get(PRODUCT_DATA);
-            setProcuct(data);
+			const { data } = await axios.get(PRODUCT_DATA);
+			setProcuct(data);
 		};
-        loadData();
+		loadData();
 	}, []);
 
 	return (
@@ -35,18 +37,31 @@ export const Cart: FC = (): JSX.Element => {
 						</button>
 					</div>
 					<ul>
-						{product.map((item: any, index)=> {
-                            return <CardItem 
-                            image={item.imageUrl}
-                            price={item.price}
-                            rating={item.rating}
-                            cartDescr={item.types}
-                            cartSize={item.size}
-                            title={item.title}
-							descr={"pizza"}
-                            ></CardItem>
-                        })}
+						{product.map((item: any, index) => {
+							return (
+								<CardItem
+									image={item.imageUrl}
+									price={item.price}
+									rating={item.rating}
+									cartDescr={item.types}
+									cartSize={item.size}
+									title={item.title}
+									descr={"pizza"}
+								></CardItem>
+							);
+						})}
 					</ul>
+				</div>
+				<div className={styles.cartTotal}>
+					<span className={styles.cartTotalProduct}>Всего пицц: <span>{product.length} шт.</span></span>
+					<span className={styles.cartTotalPrice}>Сумма заказа: <span>900 ₽</span></span>
+				</div>
+				<div className={styles.blockButton}>
+					<button className={styles.blockButtonBack}>
+					<ArrowGhost className={styles.blockButtonBackSvg}></ArrowGhost>
+						Вернуться назад
+					</button>
+					<button className={styles.blockButtonPayment}>Оплатить сейчас</button>
 				</div>
 			</div>
 		</div>

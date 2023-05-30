@@ -12,6 +12,7 @@ export const CardItem: FC<CardItemProps> = ({
 	...props
 }: CardItemProps): JSX.Element => {
 	return (
+		<>
 		<li className={styles.cartItem}>
 			<div className={styles.cartItemBlock}>
 				<img
@@ -32,5 +33,6 @@ export const CardItem: FC<CardItemProps> = ({
 				<button><PlusItem></PlusItem></button>
 			</div>
 		</li>
+		</>
 	);
 };
