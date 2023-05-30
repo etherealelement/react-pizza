@@ -7,8 +7,10 @@ import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { SkeletonLoader } from "../../helpers/skeleton";
 import { CardListProps } from "./cardList.props";
 
-
-export const CartList: FC<CardListProps> = ({ categoryId }: CardListProps): JSX.Element => {
+export const CartList: FC<CardListProps> = ({
+	categoryId,
+	sortType,
+}: CardListProps): JSX.Element => {
 	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
@@ -26,7 +28,7 @@ export const CartList: FC<CardListProps> = ({ categoryId }: CardListProps): JSX.
 		};
 		LoadData();
 		window.scrollTo(0, 0);
-	}, [categoryId]);
+	}, [categoryId, sortType]);
 
 	return (
 		<div className={styles.gridInner}>

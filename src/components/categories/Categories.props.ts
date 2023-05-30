@@ -3,5 +3,5 @@ import { DetailedHTMLProps } from 'react';
 
 export interface CategoriesProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>,HTMLUListElement>{
   value?: number;
-  onClickCategory: (item: any) => any;
+  onChangeCategory: (item: any) => any;
 }

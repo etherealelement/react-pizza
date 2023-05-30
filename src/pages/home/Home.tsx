@@ -9,19 +9,22 @@ import { NotFound } from "../../components/notfound/NotFound";
 export const Home: FC = (): JSX.Element => {
 	// Функция смены категории 
 	const [categoryId, setCategoryId] = useState(0);
-	const [sortType, setSortType] = useState();
+	const [sortType, setSortType] = useState({
+		name: "популярности",
+		sortProperty: "rating",
+	});
 
 
 	return (
 		<>
 			<div className={styles.container}>
 				<div className={styles.filterWrapper}>
-					<Categories value={categoryId} onClickCategory={(id) => setCategoryId(id)}></Categories>
-					<Sort></Sort>
+					<Categories value={categoryId} onChangeCategory={(id) => setCategoryId(id)}></Categories>
+					<Sort value={sortType} onChangeSort={(id) => setSortType(id)}></Sort>
 				</div>
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
 								
-				<CartList categoryId={categoryId}></CartList>
+				<CartList categoryId={categoryId} sortType={sortType}></CartList>
 			</div>
 		</>
 	);

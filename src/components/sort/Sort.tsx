@@ -1,16 +1,23 @@
 import { FC, useState } from "react";
 import styles from "./Sort.module.scss";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
+import { SortProps } from "./Sort.props";
 
-export const Sort: FC = (): JSX.Element => {
+export const Sort: FC<SortProps> = ({
+	value,
+	onChangeSort,
+	...props
+}: SortProps): JSX.Element => {
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
-	const [active, setActive] = useState(0);
-	const sortList = ["популярности", "цене", "алфавиту"];
-	const sortName = sortList[active];
+	const sortList = [
+		{ name: "популярности", sortProperty: "rating" },
+		{ name: "цене", sortProperty: "price" },
+		{ name: "алфавиту", sortProperty: "title" },
+	];
 
-	const onClickListItem = (index: number) => {
+	const onClickListItem = (i: number) => {
+		onChangeSort(i);
 		setVisiblePopup(false);
-		setActive(index);
 	};
 
 	return (
@@ -25,21 +32,23 @@ export const Sort: FC = (): JSX.Element => {
 						onClick={() => setVisiblePopup(!visiblePopup)}
 						className={styles.span}
 					>
-						{sortName}
+						{value?.name}
 					</span>
 				</div>
 
 				{visiblePopup && (
 					<ul className={styles.popup}>
-						{sortList.map((item: any, index: any) => (
+						{sortList.map((obj: any, index: any) => (
 							<li
 								key={index}
-								onClick={() => onClickListItem(index)}
+								onClick={() => onClickListItem(obj)}
 								className={
-									active === index ? styles.active : ""
+									value?.sortProperty === obj.sortProperty
+										? styles.active
+										: ""
 								}
 							>
-								{item}
+								{obj.name}
 							</li>
 						))}
 					</ul>

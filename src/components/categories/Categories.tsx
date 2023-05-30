@@ -44,7 +44,7 @@ const ulArray: IulArray[] = [
 
 export const Categories: FC<CategoriesProps> = ({
 	value,
-	onClickCategory,
+	onChangeCategory,
 	...props
 }: CategoriesProps): JSX.Element => {
 
@@ -52,7 +52,7 @@ export const Categories: FC<CategoriesProps> = ({
 		<ul className={styles.listContainer}>
 			{ulArray.map((item: any, index) => (
 				<ListItems
-					onClick={() => onClickCategory(index)}
+					onClick={() => onChangeCategory(index)}
 					key={item.id}
 					activeId={value}
 					index={index}
