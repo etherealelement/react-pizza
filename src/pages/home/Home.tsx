@@ -13,7 +13,7 @@ export const Home: FC = (): JSX.Element => {
 		name: "популярности",
 		sortProperty: "rating",
 	});
-
+	
 
 	return (
 		<>

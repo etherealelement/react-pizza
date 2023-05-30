@@ -19,7 +19,7 @@ export const CartList: FC<CardListProps> = ({
 		setIsLoading(true);
 		const LoadData = async () => {
 			try {
-				const { data } = await axios.get(PRODUCT_DATA + categoryId);
+				const { data } = await axios.get(`${PRODUCT_DATA}${categoryId > 0 ? `category=${categoryId}` : ''}`);
 				setProductArray(data);
 				setIsLoading(false);
 			} catch (error) {
