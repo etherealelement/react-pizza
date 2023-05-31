@@ -7,4 +7,5 @@ export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     name: string,
     sortProperty: string;
   };
+  searchValue: string;
 } 

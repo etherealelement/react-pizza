@@ -7,8 +7,6 @@ import {useState} from "react";
 
 function App() {
 	const [searchValue, setSearchValue] = useState("");
-	console.log(searchValue)
-
 
 	return (
 		<>
@@ -23,7 +21,7 @@ function App() {
 			</Header>
 			<Routes>
 				<Route path="*" element={<NotFound></NotFound>}></Route>
-				<Route path="/" element={<Home></Home>}></Route>
+				<Route path="/" element={<Home searchValue={searchValue}></Home>}></Route>
 				<Route path="/cart" element={<Cart></Cart>}></Route>
 			</Routes>
 		</>
