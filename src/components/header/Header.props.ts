@@ -5,4 +5,6 @@ export interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEle
     subtitle?: string;
     totalPrice: number;
     totalProduct: number;
+    searchValue: string;
+    setSearchValue?: (() => any) | undefined;
 }

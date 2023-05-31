@@ -6,8 +6,7 @@ import { CardItem } from "../../components/cartItem/cartItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { ReactComponent as ArrowGhost } from "../../assets/ghost-arrow.svg";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export const Cart: FC = (): JSX.Element => {
 	// dataFetching
@@ -41,6 +40,7 @@ export const Cart: FC = (): JSX.Element => {
 						{product.map((item: any, index) => {
 							return (
 								<CardItem
+									key={index}
 									image={item.imageUrl}
 									price={item.price}
 									rating={item.rating}
