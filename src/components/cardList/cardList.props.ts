@@ -9,3 +9,14 @@ export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
   };
   searchValue: string;
 } 
+
+export interface dataResponse { 
+  id: number;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
+  rating: number;
+}

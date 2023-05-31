@@ -6,6 +6,10 @@ import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { SkeletonLoader } from "../../helpers/skeleton";
 import { CardListProps } from "./cardList.props";
+import { dataResponse } from "./cardList.props";
+import { CartItemProps } from "../cardItem/CardItem.props";
+
+
 
 export const CartList: FC<CardListProps> = ({
 	searchValue,
@@ -24,7 +28,7 @@ export const CartList: FC<CardListProps> = ({
 		setIsLoading(true);
 		const LoadData = async () => {
 			try {
-				const { data } = await axios.get(
+				const { data }  = await axios.get(
 					`${PRODUCT_DATA}${category}&sortBy=${sortBy}&order=${order}`
 				);
 				setProductArray(data);
@@ -38,8 +42,13 @@ export const CartList: FC<CardListProps> = ({
 	}, [categoryId, sortType]);
 
 	// filtredPizzas
+	const pizzas = productArray.filter((item:dataResponse) => {
+		if (item.title.toLowerCase().includes(searchValue)) {
+			return true;
+		}
 
-	const pizzas = productArray.map((item: any, index) => {
+		return false;
+	}).map((item: any, index) => {
 		return (
 			<CartItem
 				key={item.id}
