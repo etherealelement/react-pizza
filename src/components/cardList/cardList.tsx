@@ -15,6 +15,8 @@ export const CartList: FC<CardListProps> = ({
 	searchValue,
 	categoryId,
 	sortType,
+	currentPage,
+	...props
 }: CardListProps): JSX.Element => {
 	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +32,7 @@ export const CartList: FC<CardListProps> = ({
 		const LoadData = async () => {
 			try {
 				const { data }  = await axios.get(
-					`${PRODUCT_DATA}${category}&sortBy=${sortBy}&order=${order}${search}`
+					`${PRODUCT_DATA}page=${currentPage}&limit=6&${category}&sortBy=${sortBy}&order=${order}${search}`
 				);
 				setProductArray(data);
 				setIsLoading(false);
@@ -40,7 +42,7 @@ export const CartList: FC<CardListProps> = ({
 		};
 		LoadData();
 		window.scrollTo(0, 0);
-	}, [categoryId, sortType, searchValue]);
+	}, [categoryId, sortType, searchValue, currentPage]);
 
 	// filtredPizzas
 	const pizzas = productArray.filter((item:dataResponse) => {

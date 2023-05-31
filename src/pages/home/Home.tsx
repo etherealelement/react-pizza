@@ -10,6 +10,7 @@ import { Pagination } from "../../components/pagination/Pagination";
 
 export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.Element => {
 	// Функция смены категории
+	const [currentPage, setCurrentPage] = useState(1)
 	const [categoryId, setCategoryId] = useState(0);
 	const [sortType, setSortType] = useState({
 		name: "популярности",
@@ -32,11 +33,12 @@ export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.E
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
 
 				<CartList
+					currentPage = {currentPage}
 					categoryId={categoryId}
 					sortType={sortType}
 					searchValue={searchValue}
 				></CartList>
-				<Pagination></Pagination>
+				<Pagination onChangePage={number => setCurrentPage(number)}></Pagination>
 			</div>
 		</>
 	);

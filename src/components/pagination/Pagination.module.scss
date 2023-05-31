@@ -1,50 +1,38 @@
-.container {
-    display: flex;
-    justify-content: center;
-}
-
-
-.pagination {
-	display: flex;
-	justify-content: center;
-	max-width: 300px;
-	align-items: center;
-	.arrowIcon {
-		display: flex;
-		padding: 2px;
-		justify-content: center;
-		border: 1px solid #eb5a1e;
-		border-radius: 50%;
-        transition: all .3s;
-		&:hover {
+.Pagination {
+	li {
+		display: inline-flex;
+		&:selected {
 			background-color: #eb5a1e;
-			fill: white;
+			color: #fff;
 		}
-	}
-	&List {
-		display: flex;
-		justify-content: space-between;
-		flex-basis: 200px;
-		align-items: center;
-		&Item {
-			display: flex;
-			justify-content: center;
-			border: 1px solid #eb5a1e;
-			padding: 10px;
-			width: 15px;
-			border-radius: 50%;
+
+		a {
+			text-align: center;
+			align-items: center;
+			line-height: 42px;
+			width: 40px;
+			height: 40px;
 			color: #eb5a1e;
-			cursor: pointer;
-			font-weight: bold;
+			border: 1px solid #eb5a1e;
+			border-radius: 50%;
 			margin-right: 10px;
+			cursor: pointer;
 			transition: all 0.3s;
 			&:hover {
 				background-color: #eb5a1e;
-				color: white;
+				color: #fff;
 			}
-			&:nth-child(1) {
-				margin-left: 10px;
+		}
+	}
+
+	:global {
+		.selected {
+			a {
+				background-color: #eb5a1e;
+				color: #fff;
 			}
 		}
 	}
 }
+
+
