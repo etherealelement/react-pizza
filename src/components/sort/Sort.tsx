@@ -10,9 +10,12 @@ export const Sort: FC<SortProps> = ({
 }: SortProps): JSX.Element => {
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
 	const sortList = [
-		{ name: "популярности", sortProperty: "rating" },
-		{ name: "цене", sortProperty: "price" },
-		{ name: "алфавиту", sortProperty: "title" },
+		{ name: "популярности (DESC)", sortProperty: "rating" },
+		{ name: "популярности (ASC)", sortProperty: "-rating" },
+		{ name: "цене(DESC)", sortProperty: "price" },
+		{ name: "цене(ASC)", sortProperty: "-price" },
+		{ name: "алфавиту(DESC)", sortProperty: "title" },
+		{ name: "алфавиту(ASK)", sortProperty: "-title" },
 	];
 
 	const onClickListItem = (i: number) => {

@@ -15,11 +15,15 @@ export const CartList: FC<CardListProps> = ({
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
 	const [productArray, setProductArray] = useState<number[]>([]);
+	const order = sortType?.sortProperty.includes("-") ? "asc" : "desc";
+	const sortBy = sortType?.sortProperty.replace("-", "");
+	const category = categoryId > 0 ? `category=${categoryId}` : '';
+	
 	useEffect(() => {
 		setIsLoading(true);
 		const LoadData = async () => {
 			try {
-				const { data } = await axios.get(`${PRODUCT_DATA}${categoryId > 0 ? `category=${categoryId}` : ''}`);
+				const { data } = await axios.get(`${PRODUCT_DATA}${category}&sortBy=${sortBy}&order=${order}`);
 				setProductArray(data);
 				setIsLoading(false);
 			} catch (error) {
