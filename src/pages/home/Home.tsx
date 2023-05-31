@@ -6,6 +6,7 @@ import { CartList } from "../../components/cardList/cardList";
 import styles from "./Home.module.scss";
 import { NotFound } from "../../components/notfound/NotFound";
 import { HomeProps } from "./Home.props";
+import { Pagination } from "../../components/pagination/Pagination";
 
 export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.Element => {
 	// Функция смены категории
@@ -35,6 +36,7 @@ export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.E
 					sortType={sortType}
 					searchValue={searchValue}
 				></CartList>
+				<Pagination></Pagination>
 			</div>
 		</>
 	);

@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	max-width: 300px;
+	align-items: center;
+	.arrowIcon {
+		display: flex;
+		padding: 2px;
+		justify-content: center;
+		border: 1px solid #eb5a1e;
+		border-radius: 50%;
+        transition: all .3s;
+		&:hover {
+			background-color: #eb5a1e;
+			fill: white;
+		}
+	}
+	&List {
+		display: flex;
+		justify-content: space-between;
+		flex-basis: 200px;
+		align-items: center;
+		&Item {
+			display: flex;
+			justify-content: center;
+			border: 1px solid #eb5a1e;
+			padding: 10px;
+			width: 15px;
+			border-radius: 50%;
+			color: #eb5a1e;
+			cursor: pointer;
+			font-weight: bold;
+			margin-right: 10px;
+			transition: all 0.3s;
+			&:hover {
+				background-color: #eb5a1e;
+				color: white;
+			}
+			&:nth-child(1) {
+				margin-left: 10px;
+			}
+		}
+	}
+}

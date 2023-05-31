@@ -23,13 +23,14 @@ export const CartList: FC<CardListProps> = ({
 	const order = sortType?.sortProperty.includes("-") ? "asc" : "desc";
 	const sortBy = sortType?.sortProperty.replace("-", "");
 	const category = categoryId > 0 ? `category=${categoryId}` : "";
+	const search = searchValue ? `&search=${searchValue}` : "";
 
 	useEffect(() => {
 		setIsLoading(true);
 		const LoadData = async () => {
 			try {
 				const { data }  = await axios.get(
-					`${PRODUCT_DATA}${category}&sortBy=${sortBy}&order=${order}`
+					`${PRODUCT_DATA}${category}&sortBy=${sortBy}&order=${order}${search}`
 				);
 				setProductArray(data);
 				setIsLoading(false);
@@ -39,11 +40,11 @@ export const CartList: FC<CardListProps> = ({
 		};
 		LoadData();
 		window.scrollTo(0, 0);
-	}, [categoryId, sortType]);
+	}, [categoryId, sortType, searchValue]);
 
 	// filtredPizzas
 	const pizzas = productArray.filter((item:dataResponse) => {
-		if (item.title.toLowerCase().includes(searchValue)) {
+		if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
 			return true;
 		}
 
