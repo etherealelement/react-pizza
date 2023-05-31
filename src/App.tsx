@@ -7,7 +7,6 @@ import { Cart } from "./pages/cart/Cart";
 function App() {
 	return (
 		<>
-			<Link to="/">
 				<Header
 					totalProduct={3}
 					subtitle={"самая вкусная пицца во вселенной"}
@@ -15,7 +14,6 @@ function App() {
 				>
 					REACT PIZZA
 				</Header>
-			</Link>
 			<Routes>
 				<Route path="*" element={<NotFound></NotFound>}></Route>
 				<Route path="/" element={<Home></Home>}></Route>
