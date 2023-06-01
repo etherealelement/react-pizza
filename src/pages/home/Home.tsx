@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useContext } from "react";
 import { Header } from "../../components/header/Header";
 import { Categories } from "../../components/categories/Categories";
 import { Sort } from "../../components/sort/Sort";
@@ -7,8 +7,11 @@ import styles from "./Home.module.scss";
 import { NotFound } from "../../components/notfound/NotFound";
 import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
+import { SearchContext } from "../../App";
 
-export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.Element => {
+
+
+export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 	// Функция смены категории
 	const [currentPage, setCurrentPage] = useState(1)
 	const [categoryId, setCategoryId] = useState(0);
@@ -36,7 +39,6 @@ export const Home: FC<HomeProps> = ({ searchValue, ...props }: HomeProps): JSX.E
 					currentPage = {currentPage}
 					categoryId={categoryId}
 					sortType={sortType}
-					searchValue={searchValue}
 				></CartList>
 				<Pagination onChangePage={number => setCurrentPage(number)}></Pagination>
 			</div>

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, useContext} from "react";
 import styles from "./cardList.module.scss";
 import { ListItems } from "../ui/listItems/ListItems";
 import { CartItem } from "../cardItem/CardItem";
@@ -8,16 +8,17 @@ import { SkeletonLoader } from "../../helpers/skeleton";
 import { CardListProps } from "./cardList.props";
 import { dataResponse } from "./cardList.props";
 import { CartItemProps } from "../cardItem/CardItem.props";
-
+import { SearchContext } from "../../App";
 
 
 export const CartList: FC<CardListProps> = ({
-	searchValue,
 	categoryId,
 	sortType,
 	currentPage,
 	...props
 }: CardListProps): JSX.Element => {
+	const { searchValue } = useContext(SearchContext);
+
 	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching

@@ -25,7 +25,7 @@ function App() {
 					<Route path="*" element={<NotFound></NotFound>}></Route>
 					<Route
 						path="/"
-						element={<Home searchValue={searchValue}></Home>}
+						element={<Home></Home>}
 					></Route>
 					<Route path="/cart" element={<Cart></Cart>}></Route>
 				</Routes>
