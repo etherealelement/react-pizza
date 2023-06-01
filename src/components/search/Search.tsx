@@ -1,15 +1,17 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { SearchProps } from "./Search.props";
 import styles from "./Search.module.scss";
 import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_search_icon.svg";
 import { ReactComponent as CloseIcon } from "../../assets/searchIcons/352270_close_icon.svg";
+import { SearchContext } from "../../App";
+
 
 export const Search: FC<SearchProps> = ({
 	children,
-	searchValue,
-	setSearchValue,
 	...props
 }: SearchProps): JSX.Element => {
+	const {searchValue, setSearchValue} = useContext(SearchContext);
+
 	return (
 		<>
 			<div className={styles.root}>

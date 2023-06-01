@@ -11,8 +11,6 @@ export const Header: FC<HeaderProps> = ({
 	subtitle,
 	totalPrice,
 	totalProduct,
-	searchValue,
-	setSearchValue,
 	...props
 }: HeaderProps): JSX.Element => {
 	return (
@@ -29,8 +27,6 @@ export const Header: FC<HeaderProps> = ({
 				</div>
 			</Link>
 			<Search
-			searchValue={searchValue}
-			setSearchValue={setSearchValue}
 			>Поиск пиццы...</Search>
 			<Link to="/cart">
 				<div className={styles.col2}>

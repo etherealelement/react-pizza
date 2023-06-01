@@ -26,7 +26,6 @@ export const CartList: FC<CardListProps> = ({
 	const sortBy = sortType?.sortProperty.replace("-", "");
 	const category = categoryId > 0 ? `category=${categoryId}` : "";
 	const search = searchValue ? `&search=${searchValue}` : "";
-
 	useEffect(() => {
 		setIsLoading(true);
 		const LoadData = async () => {
