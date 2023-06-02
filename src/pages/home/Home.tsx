@@ -6,25 +6,21 @@ import styles from "./Home.module.scss";
 import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import {setCategoryId} from "../../redux/slices/filterSlice";
+import { setCategoryId } from "../../redux/slices/filterSlice";
 
 export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
-	// Функция получения id
+	// Изменение категории;
 	const onChangeCategory = (id: number) => {
-		console.log(id);
-		dispatch(setCategoryId(id))
+		dispatch(setCategoryId(id));
 	};
 
-	// Получение стейта из redux 
+	// Получение стейта из redux
 	const dispatch = useDispatch();
-	const categoryId = useSelector(state => state.filter.categoryId);
+	const categoryId = useSelector((state) => state.filter.categoryId);
+	const sortType = useSelector((state) => state.filter.sort.sortProperty);
 
 	// Функция смены категории
-	const [currentPage, setCurrentPage] = useState(1)
-	const [sortType, setSortType] = useState({
-		name: "популярности",
-		sortProperty: "rating",
-	});
+	const [currentPage, setCurrentPage] = useState(1);
 
 	return (
 		<>
@@ -34,19 +30,18 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 						value={categoryId}
 						onChangeCategory={onChangeCategory}
 					></Categories>
-					<Sort
-						value={sortType}
-						onChangeSort={(id) => setSortType(id)}
-					></Sort>
+					<Sort></Sort>
 				</div>
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
 
 				<CartList
-					currentPage = {currentPage}
+					currentPage={currentPage}
 					categoryId={categoryId}
 					sortType={sortType}
 				></CartList>
-				<Pagination onChangePage={number => setCurrentPage(number)}></Pagination>
+				<Pagination
+					onChangePage={(number) => setCurrentPage(number)}
+				></Pagination>
 			</div>
 		</>
 	);

@@ -23,8 +23,8 @@ export const CartList: FC<CardListProps> = ({
 	const [isLoading, setIsLoading] = useState(true);
 	//  dataFetching
 	const [productArray, setProductArray] = useState<number[]>([]);
-	const order = sortType?.sortProperty.includes("-") ? "asc" : "desc";
-	const sortBy = sortType?.sortProperty.replace("-", "");
+	const order = sortType?.includes("-") ? "asc" : "desc";
+	const sortBy = sortType?.replace("-", "");
 	const category = categoryId > 0 ? `category=${categoryId}` : "";
 	const search = searchValue ? `&search=${searchValue}` : "";
 	

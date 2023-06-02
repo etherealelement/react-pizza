@@ -2,12 +2,16 @@ import { FC, useState } from "react";
 import styles from "./Sort.module.scss";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
 import { SortProps } from "./Sort.props";
+import { useSelector, useDispatch } from "react-redux";
+
 
 export const Sort: FC<SortProps> = ({
-	value,
-	onChangeSort,
 	...props
 }: SortProps): JSX.Element => {
+	const dispatch = useDispatch();
+	const sort = useSelector(state => state.filter.sort.sortProperty)
+
+
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
 	const sortList = [
 		{ name: "популярности (DESC)", sortProperty: "rating" },
@@ -19,7 +23,7 @@ export const Sort: FC<SortProps> = ({
 	];
 
 	const onClickListItem = (i: number) => {
-		onChangeSort(i);
+		// onChangeSort(i);
 		setVisiblePopup(false);
 	};
 
@@ -35,7 +39,7 @@ export const Sort: FC<SortProps> = ({
 						onClick={() => setVisiblePopup(!visiblePopup)}
 						className={styles.span}
 					>
-						{value?.name}
+						{sort?.name}
 					</span>
 				</div>
 
@@ -46,7 +50,7 @@ export const Sort: FC<SortProps> = ({
 								key={index}
 								onClick={() => onClickListItem(obj)}
 								className={
-									value?.sortProperty === obj.sortProperty
+									sort?.sortProperty === obj.sortProperty
 										? styles.active
 										: ""
 								}
