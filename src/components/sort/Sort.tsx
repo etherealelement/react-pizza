@@ -3,13 +3,13 @@ import styles from "./Sort.module.scss";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
 import { SortProps } from "./Sort.props";
 import { useSelector, useDispatch } from "react-redux";
-
+import { setSort } from "../../redux/slices/filterSlice";
 
 export const Sort: FC<SortProps> = ({
 	...props
 }: SortProps): JSX.Element => {
 	const dispatch = useDispatch();
-	const sort = useSelector(state => state.filter.sort.sortProperty)
+	const sort = useSelector(state => state.filter.sort)
 
 
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
@@ -23,7 +23,7 @@ export const Sort: FC<SortProps> = ({
 	];
 
 	const onClickListItem = (i: number) => {
-		// onChangeSort(i);
+		dispatch(setSort(i));
 		setVisiblePopup(false);
 	};
 
