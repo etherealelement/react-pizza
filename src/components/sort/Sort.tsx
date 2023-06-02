@@ -5,23 +5,25 @@ import { SortProps } from "./Sort.props";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 
+
+
+const sortList = [
+	{ name: "популярности (DESC)", sortProperty: "rating" },
+	{ name: "популярности (ASC)", sortProperty: "-rating" },
+	{ name: "цене(DESC)", sortProperty: "price" },
+	{ name: "цене(ASC)", sortProperty: "-price" },
+	{ name: "алфавиту(DESC)", sortProperty: "title" },
+	{ name: "алфавиту(ASK)", sortProperty: "-title" },
+];
+
+
+
 export const Sort: FC<SortProps> = ({
 	...props
 }: SortProps): JSX.Element => {
 	const dispatch = useDispatch();
 	const sort = useSelector(state => state.filter.sort)
-
-
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
-	const sortList = [
-		{ name: "популярности (DESC)", sortProperty: "rating" },
-		{ name: "популярности (ASC)", sortProperty: "-rating" },
-		{ name: "цене(DESC)", sortProperty: "price" },
-		{ name: "цене(ASC)", sortProperty: "-price" },
-		{ name: "алфавиту(DESC)", sortProperty: "title" },
-		{ name: "алфавиту(ASK)", sortProperty: "-title" },
-	];
-
 	const onClickListItem = (i: number) => {
 		dispatch(setSort(i));
 		setVisiblePopup(false);

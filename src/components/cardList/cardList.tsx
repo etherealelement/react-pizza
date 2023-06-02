@@ -47,7 +47,7 @@ export const CartList: FC<CardListProps> = ({
 
 	// filtredPizzas
 	const pizzas = productArray.filter((item:dataResponse) => {
-		if (item.title.toLowerCase().includes(searchValue)) {
+		if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
 			return true;
 		}
 

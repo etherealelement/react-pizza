@@ -16,8 +16,8 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 
 	// Получение стейта из redux
 	const dispatch = useDispatch();
-	const categoryId = useSelector((state) => state.filter.categoryId);
-	const sortType = useSelector((state) => state.filter.sort.sortProperty);
+	const {categoryId, sort} = useSelector((state) => state.filter);
+	
 
 	// Функция смены категории
 	const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +37,7 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 				<CartList
 					currentPage={currentPage}
 					categoryId={categoryId}
-					sortType={sortType}
+					sortType={sort.sortProperty}
 				></CartList>
 				<Pagination
 					onChangePage={(number) => setCurrentPage(number)}

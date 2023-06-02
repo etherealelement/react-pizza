@@ -1,31 +1,55 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useRef, useCallback, useState } from "react";
 import { SearchProps } from "./Search.props";
 import styles from "./Search.module.scss";
 import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_search_icon.svg";
 import { ReactComponent as CloseIcon } from "../../assets/searchIcons/352270_close_icon.svg";
 import { SearchContext } from "../../App";
+import debounce from "lodash.debounce";
 
+const testDebounce = debounce(() => {
+	console.log("hello");
+}, 500);
 
 export const Search: FC<SearchProps> = ({
 	children,
 	...props
 }: SearchProps): JSX.Element => {
-	const {searchValue, setSearchValue} = useContext(SearchContext);
+	const [value, setValue] = useState("");
+	const { setSearchValue } = useContext(SearchContext);
+	const inputRef = useRef();
+
+	const onClickClear = () => {
+		setSearchValue("");
+		setValue("");
+		inputRef.current.focus();
+	};
+
+	const updateSearchValue = useCallback(
+		debounce((str) => {
+			setSearchValue(str);	
+		}, 1000), [],
+	)
+	const onChangeInput = event => { 
+		setValue(event.target.value);
+		updateSearchValue(event.target.value);
+	}
+
 
 	return (
 		<>
 			<div className={styles.root}>
 				<input
-					value={searchValue}
-					onChange={(event) => setSearchValue(event.target.value)}
+					ref={inputRef}
+					value={value}
+					onChange={onChangeInput}
 					placeholder={children}
 					type="text"
 					className={styles.rootInput}
 				/>
 				<SearchIcon className={styles.rootInputIcon}></SearchIcon>
-				{searchValue.length > 0 && (
+				{value.length > 0 && (
 					<svg
-						onClick={()=> setSearchValue("")}
+						onClick={onClickClear}
 						className={styles.rootClose}
 						height="48"
 						viewBox="0 0 48 48"
