@@ -7,8 +7,8 @@ export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     name: string,
     sortProperty: string;
   };
-  searchValue: string;
-  currentPage: number;
+  searchValue?: string;
+  currentPage?: number;
 } 
 
 export interface dataResponse { 

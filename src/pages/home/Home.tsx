@@ -1,20 +1,26 @@
 import { FC, useState, useContext } from "react";
-import { Header } from "../../components/header/Header";
 import { Categories } from "../../components/categories/Categories";
 import { Sort } from "../../components/sort/Sort";
 import { CartList } from "../../components/cardList/cardList";
 import styles from "./Home.module.scss";
-import { NotFound } from "../../components/notfound/NotFound";
 import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
-import { SearchContext } from "../../App";
-
-
+import { useSelector, useDispatch } from "react-redux";
+import {setCategoryId} from "../../redux/slices/filterSlice";
 
 export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
+	// Функция получения id
+	const onChangeCategory = (id: number) => {
+		console.log(id);
+		dispatch(setCategoryId(id))
+	};
+
+	// Получение стейта из redux 
+	const dispatch = useDispatch();
+	const categoryId = useSelector(state => state.filter.categoryId);
+
 	// Функция смены категории
 	const [currentPage, setCurrentPage] = useState(1)
-	const [categoryId, setCategoryId] = useState(0);
 	const [sortType, setSortType] = useState({
 		name: "популярности",
 		sortProperty: "rating",
@@ -26,7 +32,7 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 				<div className={styles.filterWrapper}>
 					<Categories
 						value={categoryId}
-						onChangeCategory={(id) => setCategoryId(id)}
+						onChangeCategory={onChangeCategory}
 					></Categories>
 					<Sort
 						value={sortType}
