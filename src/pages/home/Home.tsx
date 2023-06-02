@@ -6,21 +6,21 @@ import styles from "./Home.module.scss";
 import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import { setCategoryId } from "../../redux/slices/filterSlice";
+import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 
 export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
+	// Получение стейта из redux
+	const dispatch = useDispatch();
+	const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+
 	// Изменение категории;
 	const onChangeCategory = (id: number) => {
 		dispatch(setCategoryId(id));
 	};
 
-	// Получение стейта из redux
-	const dispatch = useDispatch();
-	const {categoryId, sort} = useSelector((state) => state.filter);
-	
-
-	// Функция смены категории
-	const [currentPage, setCurrentPage] = useState(1);
+	const onChangePage = (number) => {
+		dispatch(setCurrentPage(number));
+	};
 
 	return (
 		<>
@@ -39,9 +39,7 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 					categoryId={categoryId}
 					sortType={sort.sortProperty}
 				></CartList>
-				<Pagination
-					onChangePage={(number) => setCurrentPage(number)}
-				></Pagination>
+				<Pagination value={currentPage} onChangePage={onChangePage}></Pagination>
 			</div>
 		</>
 	);

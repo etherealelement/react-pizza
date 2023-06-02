@@ -3,4 +3,5 @@ import { DetailedHTMLProps } from 'react';
 
 export interface PaginationProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     onChangePage: ((i: number) => any);
+    value: number;
 }
