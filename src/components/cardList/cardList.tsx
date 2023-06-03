@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useContext } from "react";
+import { FC, useState, useEffect, useContext, useRef } from "react";
 import styles from "./cardList.module.scss";
 import { ListItems } from "../ui/listItems/ListItems";
 import { CartItem } from "../cardItem/CardItem";
@@ -24,6 +24,11 @@ export const CartList: FC<CardListProps> = ({
 }: CardListProps): JSX.Element => {
 	// Получение данных из Redux
 	const dispatch = useDispatch();
+	// Получение ссылок
+
+	const isSearch = useRef(false);
+	const isMounted = useRef(false);
+
 	// 
 	const navigate = useNavigate();
 	const { searchValue } = useContext(SearchContext);
@@ -48,11 +53,12 @@ export const CartList: FC<CardListProps> = ({
 					sort
 				}),
 			)
+			isSearch.current = true;
 		}
 	}, []);
 
-	// loading data
-	useEffect(() => {
+	// fetchPizzas 
+	const fetchPizzas = () => {
 		setIsLoading(true);
 		const LoadData = async () => {
 			try {
@@ -67,23 +73,38 @@ export const CartList: FC<CardListProps> = ({
 		};
 		LoadData();
 		window.scrollTo(0, 0);
+	}
+
+	// loading data
+	useEffect(() => {
+		window.scrollTo(0, 0);
+
+		if (!isSearch.current) {
+			fetchPizzas();
+		}
+
+		isSearch.current = false;
+
 	}, [categoryId, sortType, searchValue, currentPage]);
 	//
 
 	// Parsing
 	useEffect(() => {
-		const queryString = qs.stringify({
-			sortType,
-			categoryId,
-			currentPage,
-		});
-
-		navigate(`?${queryString}`);
+		if (isMounted.current) {
+			const queryString = qs.stringify({
+				sortType,
+				categoryId,
+				currentPage,
+			});
+	
+			navigate(`?${queryString}`);
+		}
+		isMounted.current = true;
 	}, [categoryId, sortType, searchValue, currentPage]);
 
 	// filtredPizzas
 	const pizzas = productArray
-		.filter((item: dataResponse) => {
+		.filter((item: any) => {
 			if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
 				return true;
 			}
