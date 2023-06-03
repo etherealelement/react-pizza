@@ -25,11 +25,16 @@ export const Sort: FC<SortProps> = ({ ...props }: SortProps): JSX.Element => {
 	};
 
 	useEffect(() => {
-		document.body.addEventListener("click", (e) => {
+		const handleClickOutside = (e: any) => {
 			if (!e.composedPath().includes(sortRef.current)) {
 				setVisiblePopup(false)
 			}
-		});
+		}
+
+		document.body.addEventListener("click", handleClickOutside);
+		return () => {
+			document.body.removeEventListener("click", handleClickOutside);
+		}
 	}, []);
 
 	return (
