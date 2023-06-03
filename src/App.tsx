@@ -15,9 +15,7 @@ function App() {
 		<>
 			<SearchContext.Provider value={{ searchValue, setSearchValue }}>
 				<Header
-					totalProduct={3}
 					subtitle={"самая вкусная пицца во вселенной"}
-					totalPrice={520}
 				>
 					REACT PIZZA
 				</Header>

@@ -12,7 +12,7 @@ import { SearchContext } from "../../App";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { setFilters } from "../../redux/slices/filterSlice";
-import {  useDispatch } from "react-redux";
+import {  useSelector, useDispatch } from "react-redux";
 import { sortList } from "../sort/Sort";
 
 
@@ -41,7 +41,6 @@ export const CartList: FC<CardListProps> = ({
 	const sortBy = sortType?.replace("-", "");
 	const category = categoryId > 0 ? `category=${categoryId}` : "";
 	const search = searchValue ? `&search=${searchValue}` : "";
-
 
 	// Если бы первый рендер, то проверяем URL-параметры и сохраняем в редаксе
 	useEffect(() => {
@@ -116,6 +115,7 @@ export const CartList: FC<CardListProps> = ({
 		.map((item: any, index) => {
 			return (
 				<CartItem
+					id={item.id}
 					key={item.id}
 					image={item.imageUrl}
 					cartDescr={item.types}

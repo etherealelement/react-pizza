@@ -10,10 +10,16 @@ export const Button: FC<ButtonProps> = ({
 	children,
 	isPlus,
 	isCount = true,
+	onClickAdd,
 	...props
 }): JSX.Element => {
 	const [itemCount, setItemCount] = useState(0);
 
+	const addToCart = () => {
+		setItemCount(itemCount + 1)
+		onClickAdd();
+	}
+	
 	return (
 		<>
 			<button
@@ -22,7 +28,7 @@ export const Button: FC<ButtonProps> = ({
 					[styles.black]: variant === "black",
 				})}
 				{...props}
-				onClick={() => setItemCount(itemCount + 1)}
+				onClick={()=> addToCart()}
 			>
 				
 					{isPlus === true && <Plus className={styles.plusName}></Plus>}

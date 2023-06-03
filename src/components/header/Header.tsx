@@ -5,14 +5,19 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import { ReactComponent as CartIcon } from "../../assets/shopping-cart.svg";
 import { Link } from "react-router-dom";
 import { Search } from "../search/Search";
+import { useSelector } from "react-redux";
+
 
 export const Header: FC<HeaderProps> = ({
 	children,
 	subtitle,
-	totalPrice,
-	totalProduct,
 	...props
 }: HeaderProps): JSX.Element => {
+	const {items, totalPrice} = useSelector(state => state.cart);
+
+console.log(totalPrice)
+
+
 	return (
 		<header className={styles.header} {...props}>
 			<Link to="/">
@@ -37,7 +42,7 @@ export const Header: FC<HeaderProps> = ({
 						<span className={styles.totalProduct}>
 							{" "}
 							<CartIcon></CartIcon>
-							{totalProduct}
+							{items.length}
 						</span>
 					</button>
 				</div>

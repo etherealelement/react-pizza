@@ -2,24 +2,29 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-  categoryId: 0,
-  currentPage: 1,
-  sort: {
-    name: "популярности",
-    sortProperty: "rating"
-  }
+  totalPrice: 0,
+  items: []
 };
 
 const cartSlice = createSlice({ 
-  name: "filters",
+  name: "cart",
   initialState,
   reducers: {
-    setCategoryId(state, action) {
-      state.categoryId = action.payload;
-    }
+    addItem(state, action) {
+      state.items.push(action.payload);
+      state.totalPrice = state.items.reduce((acc, item) => {
+        return acc + item.price
+      }, 0);
+    },
+    removeItem(state, action) {
+      state.items = state.items.filter(obj => obj.id !== action.payload);
+    },
+    clearItems(state) {
+      state.items = [];
+    },
   }
 })
 
 
-export const { setCategoryId } = cartSlice.actions;
+export const { addItem, removeItem, clearItems } = cartSlice.actions;
 export default cartSlice.reducer;

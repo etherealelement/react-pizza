@@ -4,5 +4,6 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
 	variant?: "default" | "black" | "active";
 	children?: ReactNode;
 	isPlus: boolean;
-	isCount: boolean;
+	isCount?: boolean;
+	onClickAdd?: () => any;
 } 

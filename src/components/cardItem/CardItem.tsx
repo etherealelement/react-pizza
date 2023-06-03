@@ -2,8 +2,11 @@ import { FC, useState } from "react";
 import styles from "./CardItem.module.scss";
 import { CartItemProps } from "./CardItem.props";
 import { Button } from "../ui/button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import {addItem} from "../../redux/slices/cartSlice";
 
 export const CartItem: FC<CartItemProps> = ({
+	id,
 	children,
 	cartDescr,
 	image,
@@ -12,9 +15,23 @@ export const CartItem: FC<CartItemProps> = ({
 	className,
 	...props
 }: CartItemProps): JSX.Element => {
+	const dispatch = useDispatch();
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
-	const cartType:string[] = ["тонкое", "традиционное"]
+	const cartType: string[] = ["тонкое", "традиционное"]
+	
+	const onClickAdd = () => {
+		const item = {
+			id,
+			children,
+			price,
+			image,
+			type: activeType,
+			size: activeBlock,
+		};
+		dispatch(addItem(item));
+	}
+
 	return (
 		<>
 			<div className={styles.cartItem}>
@@ -55,7 +72,7 @@ export const CartItem: FC<CartItemProps> = ({
 					</div>
 					<div className={styles.cartItemPriceBLock}>
 						<b className={styles.cartItemPrice}>от {price} ₽</b>
-						<Button isPlus={true} variant={"default"}>
+						<Button  onClickAdd={() => onClickAdd()}  isPlus={true} variant={"default"}>
 							Добавить
 						</Button>
 					</div>
