@@ -12,9 +12,8 @@ import { SearchContext } from "../../App";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { setFilters } from "../../redux/slices/filterSlice";
-import {  useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { sortList } from "../sort/Sort";
-
 
 export const CartList: FC<CardListProps> = ({
 	categoryId,
@@ -29,7 +28,7 @@ export const CartList: FC<CardListProps> = ({
 	const isSearch = useRef(false);
 	const isMounted = useRef(false);
 
-	// 
+	//
 	const navigate = useNavigate();
 	const { searchValue } = useContext(SearchContext);
 
@@ -46,19 +45,19 @@ export const CartList: FC<CardListProps> = ({
 	useEffect(() => {
 		if (window.location.search) {
 			const params = qs.parse(window.location.search.substring(1));
-			const sort = sortList.find(obj => obj.sortProperty === params.sortType)
+			const sort = sortList.find((obj) => obj.sortProperty === params.sortType);
 
 			dispatch(
 				setFilters({
 					...params,
-					sort
-				}),
-			)
+					sort,
+				})
+			);
 			isSearch.current = true;
 		}
 	}, []);
 
-	// fetchPizzas 
+	// fetchPizzas
 	const fetchPizzas = () => {
 		setIsLoading(true);
 		const LoadData = async () => {
@@ -74,7 +73,7 @@ export const CartList: FC<CardListProps> = ({
 		};
 		LoadData();
 		window.scrollTo(0, 0);
-	}
+	};
 
 	// loading data
 	useEffect(() => {
@@ -85,7 +84,6 @@ export const CartList: FC<CardListProps> = ({
 		}
 
 		isSearch.current = false;
-
 	}, [categoryId, sortType, searchValue, currentPage]);
 	//
 
@@ -97,7 +95,7 @@ export const CartList: FC<CardListProps> = ({
 				categoryId,
 				currentPage,
 			});
-	
+
 			navigate(`?${queryString}`);
 		}
 		isMounted.current = true;

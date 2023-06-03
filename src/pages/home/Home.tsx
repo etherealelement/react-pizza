@@ -8,6 +8,7 @@ import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
 import qs from "qs";
+import { EmptyCard } from "../../components/emptyCard/EmptyCart";
 
 
 export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
@@ -42,6 +43,8 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 					sortType={sort.sortProperty}
 				></CartList>
 				<Pagination value={currentPage} onChangePage={onChangePage}></Pagination>
+				<EmptyCard
+				title={"Корзина пустая 😕"}></EmptyCard>
 			</div>
 		</>
 	);

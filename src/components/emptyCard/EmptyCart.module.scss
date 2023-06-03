@@ -1,0 +1,43 @@
+.cart {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	&Title {
+		font-size: 32px;
+		line-height: 39px;
+		letter-spacing: 0.01em;
+		color: #000000;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
+	&Desc {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 145.4%;
+		text-align: center;
+		letter-spacing: 0.01em;
+		margin-bottom: 47px;
+	}
+	&Img {
+		margin-bottom: 74px;
+	}
+	&Button {
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		text-align: center;
+		letter-spacing: 0.015em;
+		color: #ffffff;
+		background: #282828;
+		border-radius: 30px;
+		padding: 13px 16px;
+    border: none;
+    transition: all .3s ease-in-out;
+    &:hover{ 
+      color: #fff;
+      background-color: #615e5e;
+      border: none;
+    }
+	}
+}

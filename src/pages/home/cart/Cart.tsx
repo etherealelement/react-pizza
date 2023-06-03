@@ -12,9 +12,8 @@ import { clearItems, removeItem } from "../../../redux/slices/cartSlice";
 
 export const Cart: FC = (): JSX.Element => {
 	const dispatch = useDispatch();
-	const items = useSelector((state) => state.cart.items);
+	const {totalPrice, items} = useSelector((state) => state.cart);
 	// dataFetching
-	const [product, setProcuct] = useState([]);
 
 	const onClickClear= () => {
 		if (window.confirm("Очистить корзину ?")) {
@@ -22,6 +21,9 @@ export const Cart: FC = (): JSX.Element => {
 		}
 	}
 
+	const totalCount = items.reduce((acc, item) => {
+		return acc + item.count;
+	}, 0)
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -66,10 +68,10 @@ export const Cart: FC = (): JSX.Element => {
 				</div>
 				<div className={styles.cartTotal}>
 					<span className={styles.cartTotalProduct}>
-						Всего пицц: <span>{product.length} шт.</span>
+						Всего пицц: <span>{totalCount} шт.</span>
 					</span>
 					<span className={styles.cartTotalPrice}>
-						Сумма заказа: <span>900 ₽</span>
+						Сумма заказа: <span>{totalPrice} ₽</span>
 					</span>
 				</div>
 				<div className={styles.blockButton}>

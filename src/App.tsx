@@ -4,6 +4,7 @@ import { Header } from "./components/header/Header";
 import { NotFound } from "./components/notfound/NotFound";
 import { Cart } from "./pages/home/cart/Cart";
 import { createContext, useState } from "react";
+import { EmptyCart } from "./components/emptyCard/EmptyCart";
 // context
 export const SearchContext = createContext();
 
