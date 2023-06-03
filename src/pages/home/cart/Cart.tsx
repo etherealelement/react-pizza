@@ -1,11 +1,11 @@
 import { FC, useState, useEffect } from "react";
 import styles from "./Cart.module.scss";
-import { ReactComponent as Logo } from "../../assets/cartLogo.svg";
-import { ReactComponent as TrashIcon } from "../../assets/trash-image.svg";
-import { CardItem } from "../../components/cartItem/cartItem";
+import { ReactComponent as Logo } from "../../../assets/cartLogo.svg";
+import { ReactComponent as TrashIcon } from "../../../assets/trash-image.svg";
+import { CardItem } from "../../../components/cartItem/cartItem";
 import axios from "axios";
-import { PRODUCT_DATA } from "../../helpers/serverURL";
-import { ReactComponent as ArrowGhost } from "../../assets/ghost-arrow.svg";
+import { PRODUCT_DATA } from "../../../helpers/serverURL";
+import { ReactComponent as ArrowGhost } from "../../../assets/ghost-arrow.svg";
 import { Link } from "react-router-dom";
 
 export const Cart: FC = (): JSX.Element => {

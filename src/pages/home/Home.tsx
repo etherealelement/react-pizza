@@ -7,6 +7,8 @@ import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
+import qs from "qs";
+
 
 export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 	// Получение стейта из redux

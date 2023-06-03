@@ -7,7 +7,7 @@ import { setSort } from "../../redux/slices/filterSlice";
 
 
 
-const sortList = [
+export const sortList = [
 	{ name: "популярности (DESC)", sortProperty: "rating" },
 	{ name: "популярности (ASC)", sortProperty: "-rating" },
 	{ name: "цене(DESC)", sortProperty: "price" },

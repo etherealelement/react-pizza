@@ -2,7 +2,7 @@ import { Home } from "./pages/home/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import { Header } from "./components/header/Header";
 import { NotFound } from "./components/notfound/NotFound";
-import { Cart } from "./pages/cart/Cart";
+import { Cart } from "./pages/home/cart/Cart";
 import { createContext, useState } from "react";
 // context
 export const SearchContext = createContext();
