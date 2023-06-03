@@ -11,4 +11,5 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     itemId?: number;
     category?: number;
     rating?: number;
+    sizes?: number;
 } 

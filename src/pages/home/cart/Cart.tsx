@@ -9,21 +9,22 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CardItem } from "../../../components/cartItem/cartItem";
 import { clearItems, removeItem } from "../../../redux/slices/cartSlice";
+import { EmptyCard } from "../../../components/emptyCard/EmptyCart";
 
 export const Cart: FC = (): JSX.Element => {
 	const dispatch = useDispatch();
-	const {totalPrice, items} = useSelector((state) => state.cart);
+	const { totalPrice, items } = useSelector((state) => state.cart);
 	// dataFetching
 
-	const onClickClear= () => {
+	const onClickClear = () => {
 		if (window.confirm("Очистить корзину ?")) {
-			dispatch(clearItems())
+			dispatch(clearItems());
 		}
-	}
+	};
 
 	const totalCount = items.reduce((acc, item) => {
 		return acc + item.count;
-	}, 0)
+	}, 0);
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -32,6 +33,10 @@ export const Cart: FC = (): JSX.Element => {
 		};
 		loadData();
 	}, []);
+
+	if (!totalPrice) {
+		return <EmptyCard title={"Корзина пустая 😕"}></EmptyCard>;
+	}
 
 	return (
 		<div className={styles.cart}>
@@ -44,9 +49,9 @@ export const Cart: FC = (): JSX.Element => {
 						</div>
 						<button
 							onClick={onClickClear}
-							className={styles.cartHeaderClearButton}>
-							<span
-							>
+							className={styles.cartHeaderClearButton}
+						>
+							<span>
 								<TrashIcon></TrashIcon>
 							</span>
 							Очистить корзину
@@ -60,6 +65,7 @@ export const Cart: FC = (): JSX.Element => {
 									key={item.id}
 									title={item.children}
 									descr={item.type}
+									size={item.size}
 									{...item}
 								></CardItem>
 							);

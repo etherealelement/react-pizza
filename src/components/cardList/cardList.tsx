@@ -102,6 +102,7 @@ export const CartList: FC<CardListProps> = ({
 	}, [categoryId, sortType, searchValue, currentPage]);
 
 	// filtredPizzas
+	console.log(productArray);
 	const pizzas = productArray
 		.filter((item: any) => {
 			if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
@@ -113,6 +114,7 @@ export const CartList: FC<CardListProps> = ({
 		.map((item: any, index) => {
 			return (
 				<CartItem
+					sizes={item.size}
 					id={item.id}
 					key={item.id}
 					image={item.imageUrl}

@@ -2,6 +2,7 @@ import { FC } from "react";
 import styles from "./EmptyCart.module.scss";
 import { EmptyCartProps } from "./EmptyCart.props";
 import EmtyIcon from "../../assets/cart-empty.svg";
+import { Link } from "react-router-dom";
 
 export const EmptyCard: FC<EmptyCartProps> = ({
 	title,
@@ -15,8 +16,10 @@ export const EmptyCard: FC<EmptyCartProps> = ({
 				Вероятней всего, вы не заказывали ещё пиццу.<br></br>
 				Для того, чтобы заказать пиццу, перейди на главную страницу.
 			</p>
-      <img src={EmtyIcon} alt={title} className={styles.cartImg} />
-			<button className={styles.cartButton}>Вернуться назад</button>
+			<img src={EmtyIcon} alt={title} className={styles.cartImg} />
+			<Link to="/">
+				<button className={styles.cartButton}>Вернуться назад</button>
+			</Link>
 		</div>
 	);
 };

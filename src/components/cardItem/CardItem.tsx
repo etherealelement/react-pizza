@@ -14,6 +14,7 @@ export const CartItem: FC<CartItemProps> = ({
 	image,
 	cartSize,
 	price,
+	sizes,
 	className,
 	...props
 }: CartItemProps): JSX.Element => {
@@ -21,7 +22,6 @@ export const CartItem: FC<CartItemProps> = ({
 	const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === id));
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
-	
 	const addedCount = cartItem ? cartItem.count : 0;
 
 	const onClickAdd = () => {

@@ -16,4 +16,5 @@ export interface CardItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     itemId?: number;
     category?: number;
     rating?: number;
+    size: number;
 }

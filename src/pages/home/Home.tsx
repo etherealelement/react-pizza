@@ -43,8 +43,6 @@ export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
 					sortType={sort.sortProperty}
 				></CartList>
 				<Pagination value={currentPage} onChangePage={onChangePage}></Pagination>
-				<EmptyCard
-				title={"Корзина пустая 😕"}></EmptyCard>
 			</div>
 		</>
 	);

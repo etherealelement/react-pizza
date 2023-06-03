@@ -13,8 +13,10 @@ export const CardItem: FC<CardItemProps> = ({
 	title,
 	image,
 	count,
+	size,
 	...props
 }: CardItemProps): JSX.Element => {
+	const productSizes = [26, 30, 40]
 	const dispatch = useDispatch();
 	
 	const onClickPlus = () => {
@@ -45,7 +47,7 @@ export const CardItem: FC<CardItemProps> = ({
 				/>
 				<span>
 					<h3 className={styles.cartItemBlockTitle}>{title}</h3>
-					<p className={styles.cartItemBlockDescr}>{descr}</p>
+						<p className={styles.cartItemBlockDescr}>{descr},  {productSizes[size]} см.</p>
 				</span>
 			</div>
 			<div className={styles.cartItemCounter}>
