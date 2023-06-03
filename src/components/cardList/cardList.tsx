@@ -42,6 +42,8 @@ export const CartList: FC<CardListProps> = ({
 	const category = categoryId > 0 ? `category=${categoryId}` : "";
 	const search = searchValue ? `&search=${searchValue}` : "";
 
+
+	// Если бы первый рендер, то проверяем URL-параметры и сохраняем в редаксе
 	useEffect(() => {
 		if (window.location.search) {
 			const params = qs.parse(window.location.search.substring(1));
@@ -88,7 +90,7 @@ export const CartList: FC<CardListProps> = ({
 	}, [categoryId, sortType, searchValue, currentPage]);
 	//
 
-	// Parsing
+	// Если изменили параметры и был первый рендер
 	useEffect(() => {
 		if (isMounted.current) {
 			const queryString = qs.stringify({
