@@ -14,7 +14,9 @@ export const Header: FC<HeaderProps> = ({
 	...props
 }: HeaderProps): JSX.Element => {
 	const {items, totalPrice} = useSelector(state => state.cart);
-
+	const totalCount = items.reduce((acc, item) => {
+		return acc + item.count;
+	}, 0)
 console.log(totalPrice)
 
 
@@ -42,7 +44,7 @@ console.log(totalPrice)
 						<span className={styles.totalProduct}>
 							{" "}
 							<CartIcon></CartIcon>
-							{items.length}
+							{totalCount}
 						</span>
 					</button>
 				</div>

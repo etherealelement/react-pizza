@@ -3,14 +3,37 @@ import styles from "./cartItem.module.scss";
 import { CardItemProps } from "./cartItem.props";
 import { ReactComponent as PlusItem } from "../../assets/plusicon.svg";
 import { ReactComponent as MinusItem } from "../../assets/minus.svg";
+import { useDispatch } from "react-redux";
+import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice";
 
 export const CardItem: FC<CardItemProps> = ({
+	id,
 	price,
 	descr,
 	title,
 	image,
+	count,
 	...props
 }: CardItemProps): JSX.Element => {
+	const dispatch = useDispatch();
+	
+	const onClickPlus = () => {
+		dispatch(addItem({
+			id,
+		}));
+
+	}
+
+	const onClickMinus = () => {
+		dispatch(minusItem(id));
+	}
+
+	const onClickRemove = () => {
+		if (window.confirm("Подтвердить удаление товара")) {
+			dispatch(removeItem(id));
+		}
+	}
+
 	return (
 		<>
 		<li className={styles.cartItem}>
@@ -27,11 +50,17 @@ export const CardItem: FC<CardItemProps> = ({
 			</div>
 			<div className={styles.cartItemCounter}>
 				<span>
-					<button><MinusItem></MinusItem></button>2<button><PlusItem></PlusItem></button>
+						<button
+						onClick={onClickMinus}
+						><MinusItem></MinusItem></button>{count}<button
+						onClick={onClickPlus}
+						><PlusItem></PlusItem></button>
 				</span>
-				<p className={styles.cartItemPrice}>{price} ₽</p>
-				<button><PlusItem></PlusItem></button>
-			</div>
+				<p className={styles.cartItemPrice}>{price * count} ₽</p>
+					<button
+						onClick={onClickRemove}
+						className={styles.cartItemPriceClose}><PlusItem></PlusItem></button>
+			</div> 
 		</li>
 		</>
 	);

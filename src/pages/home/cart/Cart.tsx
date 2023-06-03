@@ -2,15 +2,26 @@ import { FC, useState, useEffect } from "react";
 import styles from "./Cart.module.scss";
 import { ReactComponent as Logo } from "../../../assets/cartLogo.svg";
 import { ReactComponent as TrashIcon } from "../../../assets/trash-image.svg";
-import { CardItem } from "../../../components/cartItem/cartItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../../helpers/serverURL";
 import { ReactComponent as ArrowGhost } from "../../../assets/ghost-arrow.svg";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { CardItem } from "../../../components/cartItem/cartItem";
+import { removeItem } from "../../../redux/slices/cartSlice";
 
 export const Cart: FC = (): JSX.Element => {
+	const dispatch = useDispatch();
+	const items = useSelector((state) => state.cart.items);
 	// dataFetching
 	const [product, setProcuct] = useState([]);
+
+	const onClickClear= () => {
+		if (window.confirm("Очистить корзину ?")) {
+			dispatch(removeItem(id))
+		}
+	}
+
 
 	useEffect(() => {
 		const loadData = async () => {
@@ -37,17 +48,14 @@ export const Cart: FC = (): JSX.Element => {
 						</button>
 					</div>
 					<ul>
-						{product.map((item: any, index) => {
+						{items.map((item: any, index) => {
 							return (
 								<CardItem
-									key={index}
-									image={item.imageUrl}
-									price={item.price}
-									rating={item.rating}
-									cartDescr={item.types}
-									cartSize={item.size}
-									title={item.title}
-									descr={"pizza"}
+									id={item.id}
+									key={item.id}
+									title={item.children}
+									descr={item.type}
+									{...item}
 								></CardItem>
 							);
 						})}
@@ -64,15 +72,11 @@ export const Cart: FC = (): JSX.Element => {
 				<div className={styles.blockButton}>
 					<Link to="/">
 						<button className={styles.blockButtonBack}>
-							<ArrowGhost
-								className={styles.blockButtonBackSvg}
-							></ArrowGhost>
+							<ArrowGhost className={styles.blockButtonBackSvg}></ArrowGhost>
 							Вернуться назад
 						</button>
 					</Link>
-					<button className={styles.blockButtonPayment}>
-						Оплатить сейчас
-					</button>
+					<button className={styles.blockButtonPayment}>Оплатить сейчас</button>
 				</div>
 			</div>
 		</div>

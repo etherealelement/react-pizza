@@ -7,10 +7,11 @@ import { DetailedHTMLProps } from 'react';
 export interface CardItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { 
     descr?: string;
     image?: string;
+    count: number;
     children?: ReactNode;
     cartDescr: number[];
     cartSize: number[];
-    price?: number;
+    price: number;
     activeType?: number;
     itemId?: number;
     category?: number;
