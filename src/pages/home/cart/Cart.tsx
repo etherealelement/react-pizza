@@ -8,7 +8,7 @@ import { ReactComponent as ArrowGhost } from "../../../assets/ghost-arrow.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CardItem } from "../../../components/cartItem/cartItem";
-import { removeItem } from "../../../redux/slices/cartSlice";
+import { clearItems, removeItem } from "../../../redux/slices/cartSlice";
 
 export const Cart: FC = (): JSX.Element => {
 	const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export const Cart: FC = (): JSX.Element => {
 
 	const onClickClear= () => {
 		if (window.confirm("Очистить корзину ?")) {
-			dispatch(removeItem(id))
+			dispatch(clearItems())
 		}
 	}
 
@@ -40,8 +40,11 @@ export const Cart: FC = (): JSX.Element => {
 							<Logo></Logo>
 							<h1 className={styles.cartHeaderTitle}>Корзина</h1>
 						</div>
-						<button className={styles.cartHeaderClearButton}>
-							<span>
+						<button
+							onClick={onClickClear}
+							className={styles.cartHeaderClearButton}>
+							<span
+							>
 								<TrashIcon></TrashIcon>
 							</span>
 							Очистить корзину
