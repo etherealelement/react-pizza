@@ -5,6 +5,8 @@ import { Button } from "../ui/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {addItem} from "../../redux/slices/cartSlice";
 
+const cartType: string[] = ["тонкое", "традиционное"]
+
 export const CartItem: FC<CartItemProps> = ({
 	id,
 	children,
@@ -16,17 +18,19 @@ export const CartItem: FC<CartItemProps> = ({
 	...props
 }: CartItemProps): JSX.Element => {
 	const dispatch = useDispatch();
+	const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === id));
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
-	const cartType: string[] = ["тонкое", "традиционное"]
 	
+	const addedCount = cartItem ? cartItem.count : 0;
+
 	const onClickAdd = () => {
 		const item = {
 			id,
 			children,
 			price,
 			image,
-			type: activeType,
+			type: cartType[activeType],
 			size: activeBlock,
 		};
 		dispatch(addItem(item));
@@ -72,7 +76,7 @@ export const CartItem: FC<CartItemProps> = ({
 					</div>
 					<div className={styles.cartItemPriceBLock}>
 						<b className={styles.cartItemPrice}>от {price} ₽</b>
-						<Button  onClickAdd={() => onClickAdd()}  isPlus={true} variant={"default"}>
+						<Button addedCount={addedCount} cartItem={cartItem} onClickAdd={() => onClickAdd()}  isPlus={true} variant={"default"}>
 							Добавить
 						</Button>
 					</div>

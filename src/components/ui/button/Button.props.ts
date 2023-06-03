@@ -5,5 +5,7 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
 	children?: ReactNode;
 	isPlus: boolean;
 	isCount?: boolean;
+	cartItem?: number;
+	addedCount: number;
 	onClickAdd?: () => any;
 } 

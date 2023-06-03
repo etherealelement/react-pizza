@@ -32,10 +32,13 @@
 	.itemSpan {
 		margin-left: 5px;
 		width: 22px;
+		height: 22px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		font-weight: 700;
-		font-size: 13px;
-		line-height: 16px;
-		padding: 7px 3px;
+		font-size: 10px;
+		line-height: 16px;;
 		background-color: #eb5a1e;
 		color: #ffffff;
 		border-radius: 50%;

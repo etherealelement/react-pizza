@@ -8,9 +8,11 @@ export const Button: FC<ButtonProps> = ({
 	variant = "actived",
 	className,
 	children,
+	cartItem,
 	isPlus,
 	isCount = true,
 	onClickAdd,
+	addedCount,
 	...props
 }): JSX.Element => {
 	const [itemCount, setItemCount] = useState(0);
@@ -34,7 +36,7 @@ export const Button: FC<ButtonProps> = ({
 					{isPlus === true && <Plus className={styles.plusName}></Plus>}
 					{children}
 				
-				{isCount && <span className={styles.itemSpan}>{itemCount}</span>}
+				{cartItem && <span className={styles.itemSpan}>{addedCount}</span>}
 			</button>
 		</>
 	);
