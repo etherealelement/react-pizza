@@ -16,54 +16,62 @@ export const CardItem: FC<CardItemProps> = ({
 	size,
 	...props
 }: CardItemProps): JSX.Element => {
-	const productSizes = [26, 30, 40]
+	const productSizes = [26, 30, 40];
 	const dispatch = useDispatch();
-	
-	const onClickPlus = () => {
-		dispatch(addItem({
-			id,
-		}));
 
-	}
+	const onClickPlus = () => {
+		dispatch(
+			addItem({
+				id,
+			})
+		);
+	};
 
 	const onClickMinus = () => {
 		dispatch(minusItem(id));
-	}
+	};
 
 	const onClickRemove = () => {
 		if (window.confirm("Подтвердить удаление товара")) {
 			dispatch(removeItem(id));
 		}
-	}
+	};
 
 	return (
 		<>
-		<li className={styles.cartItem}>
-			<div className={styles.cartItemBlock}>
-				<img
-					src={image}
-					alt={title}
-					className={styles.cartItemBlockImg}
-				/>
-				<span>
-					<h3 className={styles.cartItemBlockTitle}>{title}</h3>
-						<p className={styles.cartItemBlockDescr}>{descr},  {productSizes[size]} см.</p>
-				</span>
-			</div>
-			<div className={styles.cartItemCounter}>
-				<span>
-						<button
-						onClick={onClickMinus}
-						><MinusItem></MinusItem></button>{count}<button
-						onClick={onClickPlus}
-						><PlusItem></PlusItem></button>
-				</span>
-				<p className={styles.cartItemPrice}>{price * count} ₽</p>
+			<li className={styles.cartItem}>
+				<div className={styles.cartItemBlock}>
+					<img
+						src={image}
+						alt={title}
+						className={styles.cartItemBlockImg}
+					/>
+					<span>
+						<h3 className={styles.cartItemBlockTitle}>{title}</h3>
+						<p className={styles.cartItemBlockDescr}>
+							{descr}, {productSizes[size]} см.
+						</p>
+					</span>
+				</div>
+				<div className={styles.cartItemCounter}>
+					<span>
+						<button onClick={onClickMinus}>
+							<MinusItem></MinusItem>
+						</button>
+						{count}
+						<button onClick={onClickPlus}>
+							<PlusItem></PlusItem>
+						</button>
+					</span>
+					<p className={styles.cartItemPrice}>{price * count} ₽</p>
 					<button
 						onClick={onClickRemove}
-						className={styles.cartItemPriceClose}><PlusItem></PlusItem></button>
-			</div> 
-		</li>
+						className={styles.cartItemPriceClose}
+					>
+						<PlusItem></PlusItem>
+					</button>
+				</div>
+			</li>
 		</>
 	);
 };

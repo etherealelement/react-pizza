@@ -24,10 +24,8 @@ export const CartList: FC<CardListProps> = ({
 	// Получение данных из Redux
 	const dispatch = useDispatch();
 	// Получение ссылок
-
 	const isSearch = useRef(false);
 	const isMounted = useRef(false);
-
 	//
 	const navigate = useNavigate();
 	const { searchValue } = useContext(SearchContext);
@@ -68,7 +66,10 @@ export const CartList: FC<CardListProps> = ({
 				setProductArray(data);
 				setIsLoading(false);
 			} catch (error) {
+				setIsLoading(false);
 				alert("Не удалось получить данные, попробуйте позже.");
+			} finally {
+				setIsLoading(false);
 			}
 		};
 		LoadData();
