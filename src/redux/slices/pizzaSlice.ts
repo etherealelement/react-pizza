@@ -46,6 +46,7 @@ const pizzaSlice = createSlice({
   }
 });
 
+export const selectPizza = (state) => state.pizza;
 export const selectCart = (state) => state.cart;
 export const selectTotalPrice = (state) => state.cart;
 

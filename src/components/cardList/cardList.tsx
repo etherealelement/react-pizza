@@ -1,19 +1,19 @@
 import { FC, useState, useEffect, useContext, useRef } from "react";
 import styles from "./cardList.module.scss";
-import { ListItems } from "../ui/listItems/ListItems";
 import { CartItem } from "../cardItem/CardItem";
 import axios from "axios";
 import { PRODUCT_DATA } from "../../helpers/serverURL";
 import { SkeletonLoader } from "../../helpers/skeleton";
 import { CardListProps } from "./cardList.props";
-import { dataResponse } from "./cardList.props";
-import { CartItemProps } from "../cardItem/CardItem.props";
 import { SearchContext } from "../../App";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import { setFilters } from "../../redux/slices/filterSlice";
+import { selectFilter } from "../../redux/slices/filterSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { sortList } from "../sort/Sort";
+import { selectPizza } from "../../redux/slices/pizzaSlice";
+import { setFilters } from "../../redux/slices/filterSlice";
+import { NotFound } from "../notfound/NotFound";
 
 export const CartList: FC<CardListProps> = ({
 	categoryId,
@@ -21,18 +21,13 @@ export const CartList: FC<CardListProps> = ({
 	currentPage,
 	...props
 }: CardListProps): JSX.Element => {
-	// Получение данных из Redux
 	const dispatch = useDispatch();
-	// Получение ссылок
 	const isSearch = useRef(false);
 	const isMounted = useRef(false);
-	//
 	const navigate = useNavigate();
+	// const { item, state } = useSelector(selectPizza);
 	const { searchValue } = useContext(SearchContext);
-
-	// isLoadingFlag
 	const [isLoading, setIsLoading] = useState(true);
-	//  dataFetching
 	const [productArray, setProductArray] = useState<number[]>([]);
 	const order = sortType?.includes("-") ? "asc" : "desc";
 	const sortBy = sortType?.replace("-", "");
@@ -43,7 +38,9 @@ export const CartList: FC<CardListProps> = ({
 	useEffect(() => {
 		if (window.location.search) {
 			const params = qs.parse(window.location.search.substring(1));
-			const sort = sortList.find((obj) => obj.sortProperty === params.sortType);
+			const sort = sortList.find(
+				(obj) => obj.sortProperty === params.sortType
+			);
 
 			dispatch(
 				setFilters({
@@ -130,12 +127,18 @@ export const CartList: FC<CardListProps> = ({
 	// SkeletonLoader
 
 	const skeletonLoader = [...new Array(9)].map((_, index) => (
-		<SkeletonLoader key={index} className={styles.skeleton}></SkeletonLoader>
+		<SkeletonLoader
+			key={index}
+			className={styles.skeleton}
+		></SkeletonLoader>
 	));
 
 	return (
-		<div className={styles.gridInner}>
-			{isLoading ? skeletonLoader : pizzas}
-		</div>
+		<>
+			{pizzas.length === 0 && <NotFound></NotFound>}
+			<div className={styles.gridInner}>
+				{isLoading ? skeletonLoader : pizzas}
+			</div>
+		</>
 	);
 };

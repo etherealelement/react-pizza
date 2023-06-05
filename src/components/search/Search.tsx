@@ -5,6 +5,9 @@ import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_se
 import { ReactComponent as CloseIcon } from "../../assets/searchIcons/352270_close_icon.svg";
 import { SearchContext } from "../../App";
 import debounce from "lodash.debounce";
+import { setSearchValue } from "../../redux/slices/filterSlice";
+import { useDispatch } from "react-redux";
+
 
 const testDebounce = debounce(() => {
 	console.log("hello");
@@ -14,12 +17,13 @@ export const Search: FC<SearchProps> = ({
 	children,
 	...props
 }: SearchProps): JSX.Element => {
+	const dispatch = useDispatch();
 	const [value, setValue] = useState("");
 	const { setSearchValue } = useContext(SearchContext);
 	const inputRef = useRef();
 
 	const onClickClear = () => {
-		setSearchValue("");
+		dispatch(setSearchValue(value))
 		setValue("");
 		inputRef.current.focus();
 	};

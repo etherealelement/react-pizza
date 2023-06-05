@@ -4,6 +4,7 @@ import { CartItemProps } from "./CardItem.props";
 import { Button } from "../ui/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {addItem} from "../../redux/slices/cartSlice";
+import { selectCartItemById } from "../../redux/slices/cartSlice";
 
 const cartType: string[] = ["тонкое", "традиционное"]
 
@@ -19,7 +20,7 @@ export const CartItem: FC<CartItemProps> = ({
 	...props
 }: CartItemProps): JSX.Element => {
 	const dispatch = useDispatch();
-	const cartItem = useSelector(state => state.cart.items.find(obj => obj.id === id));
+	const cartItem = useSelector(selectCartItemById(id));
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
 	const addedCount = cartItem ? cartItem.count : 0;
