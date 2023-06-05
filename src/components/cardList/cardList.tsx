@@ -14,6 +14,7 @@ import { sortList } from "../sort/Sort";
 import { selectPizza } from "../../redux/slices/pizzaSlice";
 import { setFilters } from "../../redux/slices/filterSlice";
 import { NotFound } from "../notfound/NotFound";
+import { Link } from "react-router-dom";
 
 export const CartList: FC<CardListProps> = ({
 	categoryId,
@@ -108,10 +109,10 @@ export const CartList: FC<CardListProps> = ({
 		})
 		.map((item: any, index) => {
 			return (
+				<Link key={item.id} to={`/pizza/${item.id}`}>
 				<CartItem
 					sizes={item.size}
 					id={item.id}
-					key={item.id}
 					image={item.imageUrl}
 					cartDescr={item.types}
 					cartSize={item.sizes}
@@ -121,6 +122,7 @@ export const CartList: FC<CardListProps> = ({
 				>
 					{item.title}
 				</CartItem>
+				</Link>
 			);
 		});
 
@@ -135,10 +137,13 @@ export const CartList: FC<CardListProps> = ({
 
 	return (
 		<>
-			{pizzas.length === 0 && <NotFound></NotFound>}
-			<div className={styles.gridInner}>
-				{isLoading ? skeletonLoader : pizzas}
-			</div>
+			{pizzas.length === 0 ? (
+				<NotFound></NotFound>
+			) : (
+				<div className={styles.gridInner}>
+					{isLoading ? skeletonLoader : pizzas}
+				</div>
+			)}
 		</>
 	);
 };
