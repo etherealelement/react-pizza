@@ -66,10 +66,7 @@ export const CartList: FC<CardListProps> = ({
 				setProductArray(data);
 				setIsLoading(false);
 			} catch (error) {
-				setIsLoading(false);
 				alert("Не удалось получить данные, попробуйте позже.");
-			} finally {
-				setIsLoading(false);
 			}
 		};
 		LoadData();

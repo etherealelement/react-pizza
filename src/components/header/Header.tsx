@@ -6,14 +6,14 @@ import { ReactComponent as CartIcon } from "../../assets/shopping-cart.svg";
 import { Link } from "react-router-dom";
 import { Search } from "../search/Search";
 import { useSelector } from "react-redux";
-
+import { selectCart } from "../../redux/slices/pizzaSlice";
 
 export const Header: FC<HeaderProps> = ({
 	children,
 	subtitle,
 	...props
 }: HeaderProps): JSX.Element => {
-	const {items, totalPrice} = useSelector(state => state.cart);
+	const {items, totalPrice} = useSelector(selectCart);
 	const totalCount = items.reduce((acc, item) => {
 		return acc + item.count;
 	}, 0)

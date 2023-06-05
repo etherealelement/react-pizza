@@ -4,6 +4,8 @@ import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
 import { SortProps } from "./Sort.props";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
+import { selectSort } from "../../redux/slices/filterSlice";
+
 
 export const sortList = [
 	{ name: "популярности (DESC)", sortProperty: "rating" },
@@ -16,7 +18,7 @@ export const sortList = [
 
 export const Sort: FC<SortProps> = ({ ...props }: SortProps): JSX.Element => {
 	const dispatch = useDispatch();
-	const sort = useSelector((state) => state.filter.sort);
+	const sort = useSelector(selectSort);
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
 	const sortRef = useRef();
 	const onClickListItem = (i: number) => {
