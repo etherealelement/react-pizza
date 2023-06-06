@@ -1,21 +1,23 @@
 import { FC, useEffect, useState } from "react";
 import styles from "./FullPizza.module.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FullPizzaProps } from "./FullPizza.props";
 
 export const FullPizza: FC = (): JSX.Element => {
 	const { id } = useParams();
 	const [data, setData] = useState();
+	const navigate = useNavigate();
+
 
 	useEffect(() => {
-		const loadData = async () => {
+		const loadData = async ():Promise<void>=> {
 			try {
 				const { data } = await axios.get(
 					"https://64732640d784bccb4a3c4d81.mockapi.io/items/" + id
 				);
 				setData(data);
 			} catch (error) {
+				navigate("/")
 				alert(error);
 			}
 		};
@@ -24,7 +26,7 @@ export const FullPizza: FC = (): JSX.Element => {
 	console.log(data);
 
 	if (!data) {
-		return "Загрузка...";
+		<>return "Загрузка..."</>;
 	}
 
 	return (

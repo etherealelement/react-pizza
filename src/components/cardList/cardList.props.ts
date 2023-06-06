@@ -8,6 +8,8 @@ export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
   currentPage?: number;
 } 
 
+
+
 export interface dataResponse { 
   id: number;
   imageUrl: string;
