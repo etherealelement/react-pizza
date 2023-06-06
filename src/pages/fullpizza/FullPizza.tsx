@@ -24,7 +24,6 @@ export const FullPizza: FC = (): JSX.Element => {
         };
         loadData();
     }, []);
-    console.log(data);
 
     if (!data) {
         return  <>"Загрузка..."</>;

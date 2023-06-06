@@ -15,9 +15,6 @@ export const CartItem: FC<CartItemProps> = ({
 	image,
 	cartSize,
 	price,
-	sizes,
-	className,
-	...props
 }: CartItemProps): JSX.Element => {
 	const dispatch = useDispatch();
 	const cartItem = useSelector(selectCartItemById(id));
