@@ -7,6 +7,7 @@ function App():JSX.Element {
 	const [searchValue, setSearchValue] = useState("");
 	// счетчик на Redux
 
+
 	return (
 		<>
 			<SearchContext.Provider value={{ searchValue, setSearchValue }}>

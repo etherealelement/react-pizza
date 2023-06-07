@@ -26,9 +26,9 @@ export const FullPizza: FC = (): JSX.Element => {
     }, []);
 
     if (!data) {
-        return  <>"Загрузка..."</>;
+        return <>"Загрузка..."</>;
     }
-
+    
     return (
         <div className={styles.container}>
             <div className={styles.wrap}>

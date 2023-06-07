@@ -12,4 +12,14 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     category?: number;
     rating?: number;
     sizes?: number;
-} 
+}
+
+
+export interface  OnClickItemProps {
+    id: number | string | undefined,
+    children?:  ReactNode;
+    price: number | string | undefined,
+    image: string,
+    type: string[number],
+    size:number,
+}

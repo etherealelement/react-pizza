@@ -5,8 +5,12 @@ import { Button } from "../ui/button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import {addItem} from "../../redux/slices/cartSlice";
 import { selectCartItemById } from "../../redux/slices/cartSlice";
+import {OnClickItemProps} from "./CardItem.props";
+
 
 const cartType: string[] = ["тонкое", "традиционное"]
+
+
 
 export const CartItem: FC<CartItemProps> = ({
 	id,
@@ -23,7 +27,7 @@ export const CartItem: FC<CartItemProps> = ({
 	const addedCount = cartItem ? cartItem.count : 0;
 
 	const onClickAdd = () => {
-		const item = {
+		const item: OnClickItemProps = {
 			id,
 			children,
 			price,
