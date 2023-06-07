@@ -3,7 +3,7 @@ import { DetailedHTMLProps } from 'react';
 
 export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   categoryId: number;
-  sortType?: string[] | string;
+  sortType?: string;
   searchValue?: string;
   currentPage?: number;
 } 
