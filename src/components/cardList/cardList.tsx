@@ -8,19 +8,16 @@ import { CardListProps } from "./cardList.props";
 import { SearchContext } from "../../App";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
-import { selectFilter } from "../../redux/slices/filterSlice";
-import { useSelector, useDispatch } from "react-redux";
 import { sortList } from "../sort/Sort";
-import { selectPizza } from "../../redux/slices/pizzaSlice";
 import { setFilters } from "../../redux/slices/filterSlice";
 import { NotFound } from "../notfound/NotFound";
 import { Link } from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 export const CartList: FC<CardListProps> = ({
 	categoryId,
 	sortType,
 	currentPage,
-	...props
 }: CardListProps): JSX.Element => {
 	const dispatch = useDispatch();
 	const isSearch = useRef(false);
@@ -67,8 +64,9 @@ export const CartList: FC<CardListProps> = ({
 				alert("Не удалось получить данные, попробуйте позже.");
 			}
 		};
-		LoadData();
 		window.scrollTo(0, 0);
+		return LoadData();
+
 	};
 
 	// loading data
@@ -107,7 +105,7 @@ export const CartList: FC<CardListProps> = ({
 
 			return false;
 		})
-		.map((item: any, index) => {
+		.map((item: any) => {
 			return (
 				<Link key={item.id} to={`/pizza/${item.id}`}>
 				<CartItem

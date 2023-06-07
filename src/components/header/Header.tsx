@@ -15,7 +15,7 @@ export const Header: FC<HeaderProps> = ({
 }: HeaderProps): JSX.Element => {
 	const { items, totalPrice } = useSelector(selectCart);
 	const {pathname} = useLocation();
-	const totalCount = items.reduce((acc, item) => {
+	const totalCount = items.reduce((acc:number, item: any) => {
 		return acc + item.count;
 	}, 0)
 console.log(totalPrice)
