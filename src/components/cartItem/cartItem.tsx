@@ -14,7 +14,6 @@ export const CardItem: FC<CardItemProps> = ({
 	image,
 	count,
 	size,
-	...props
 }: CardItemProps): JSX.Element => {
 	const productSizes = [26, 30, 40];
 	const dispatch = useDispatch();

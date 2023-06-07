@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 export const EmptyCard: FC<EmptyCartProps> = ({
 	title,
-	description,
-	...props
 }: EmptyCartProps): JSX.Element => {
 	return (
 		<div className={styles.cart}>

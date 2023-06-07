@@ -2,30 +2,23 @@ import { FC, useContext, useRef, useCallback, useState } from "react";
 import { SearchProps } from "./Search.props";
 import styles from "./Search.module.scss";
 import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_search_icon.svg";
-import { ReactComponent as CloseIcon } from "../../assets/searchIcons/352270_close_icon.svg";
 import { SearchContext } from "../../App";
 import debounce from "lodash.debounce";
-import { setSearchValue } from "../../redux/slices/filterSlice";
 import { useDispatch } from "react-redux";
 
 
-const testDebounce = debounce(() => {
-	console.log("hello");
-}, 500);
-
 export const Search: FC<SearchProps> = ({
 	children,
-	...props
 }: SearchProps): JSX.Element => {
 	const dispatch = useDispatch();
 	const [value, setValue] = useState("");
-	const { setSearchValue } = useContext(SearchContext);
-	const inputRef = useRef();
+	const { setSearchValue } = useContext<string | any>(SearchContext);
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const onClickClear = () => {
 		dispatch(setSearchValue(value))
 		setValue("");
-		inputRef.current.focus();
+			inputRef.current?.focus();
 	};
 
 	const updateSearchValue = useCallback(
@@ -33,7 +26,7 @@ export const Search: FC<SearchProps> = ({
 			setSearchValue(str);	
 		}, 1000), [],
 	)
-	const onChangeInput = event => { 
+	const onChangeInput = (event: any) => {
 		setValue(event.target.value);
 		updateSearchValue(event.target.value);
 	}
