@@ -1,13 +1,14 @@
-import { FC, useState, useRef, useEffect } from "react";
+import {FC, useState, useRef, useEffect} from "react";
 import styles from "./Sort.module.scss";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
 import { SortProps } from "./Sort.props";
 import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 import { selectSort } from "../../redux/slices/filterSlice";
+import {SortListProps} from "./Sort.props";
 
-
-export const sortList = [
+// eslint-disable-next-line react-refresh/only-export-components
+export const sortList: SortListProps[] = [
 	{ name: "популярности (DESC)", sortProperty: "rating" },
 	{ name: "популярности (ASC)", sortProperty: "-rating" },
 	{ name: "цене(DESC)", sortProperty: "price" },
@@ -16,12 +17,12 @@ export const sortList = [
 	{ name: "алфавиту(ASK)", sortProperty: "-title" },
 ];
 
-export const Sort: FC<SortProps> = ({ ...props }: SortProps): JSX.Element => {
+export const Sort: FC<SortProps> = (): JSX.Element => {
 	const dispatch = useDispatch();
 	const sort = useSelector(selectSort);
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
-	const sortRef = useRef();
-	const onClickListItem = (i: number) => {
+	const sortRef= useRef<HTMLDivElement>(null);
+	const onClickListItem = (i: SortListProps) => {
 		dispatch(setSort(i));
 		setVisiblePopup(false);
 	};
@@ -57,7 +58,7 @@ export const Sort: FC<SortProps> = ({ ...props }: SortProps): JSX.Element => {
 
 				{visiblePopup && (
 					<ul className={styles.popup}>
-						{sortList.map((obj: any, index: any) => (
+						{sortList.map((obj: SortListProps, index: number) => (
 							<li
 								key={index}
 								onClick={() => onClickListItem(obj)}
