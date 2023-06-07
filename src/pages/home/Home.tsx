@@ -1,4 +1,4 @@
-import { FC, useState, useContext } from "react";
+import { FC } from "react";
 import { Categories } from "../../components/categories/Categories";
 import { Sort } from "../../components/sort/Sort";
 import { CartList } from "../../components/cardList/cardList";
@@ -7,21 +7,20 @@ import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
 import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
-import qs from "qs";
-import { EmptyCard } from "../../components/emptyCard/EmptyCart";
 
 
-export const Home: FC<HomeProps> = ({ ...props }: HomeProps): JSX.Element => {
+
+export const Home: FC<HomeProps> = (): JSX.Element => {
 	// Получение стейта из redux
 	const dispatch = useDispatch();
-	const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+	const { categoryId, sort, currentPage } = useSelector((state: any) => state.filter);
 
 	// Изменение категории;
 	const onChangeCategory = (id: number) => {
 		dispatch(setCategoryId(id));
 	};
 
-	const onChangePage = (number) => {
+	const onChangePage = (number: number) => {
 		dispatch(setCurrentPage(number));
 	};
 
