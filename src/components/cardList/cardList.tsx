@@ -1,146 +1,88 @@
-import { FC, useState, useEffect, useContext, useRef } from "react";
+import {FC, useEffect, useCallback} from "react";
 import styles from "./cardList.module.scss";
-import { CartItem } from "../cardItem/CardItem";
-import axios from "axios";
-import { PRODUCT_DATA } from "../../helpers/serverURL";
-import { SkeletonLoader } from "../../helpers/skeleton";
-import { CardListProps } from "./cardList.props";
-import { SearchContext } from "../../App";
-import qs from "qs";
-import { useNavigate } from "react-router-dom";
-import { sortList } from "../sort/Sort";
-import { setFilters } from "../../redux/slices/filterSlice/filterSlice.ts";
-import { NotFound } from "../notfound/NotFound";
-import { Link } from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {CartItem} from "../cardItem/CardItem";
+import {SkeletonLoader} from "../../helpers/skeleton";
+import {CardListProps} from "./cardList.props";
+import {selectFilter, setCategoryId} from "../../redux/slices/filterSlice/filterSlice.ts";
+import {NotFound} from "../notfound/NotFound";
+import {useDispatch, useSelector} from "react-redux";
+import {getPizzas, selectPizza} from "../../redux/slices/pizzaSlice/pizzaSlice.ts";
+import {Categories} from "../categories/Categories.tsx";
+import {Sort} from "../sort/Sort.tsx";
 
-export const CartList: FC<CardListProps> = ({
-	categoryId,
-	sortType,
-	currentPage,
-}: CardListProps): JSX.Element => {
-	const dispatch = useDispatch();
-	const isSearch = useRef(false);
-	const isMounted = useRef(false);
-	const navigate = useNavigate();
-	// const { item, state } = useSelector(selectPizza);
-	const { searchValue } = useContext<string | any>(SearchContext);
-	const [isLoading, setIsLoading] = useState(true);
-	const [productArray, setProductArray] = useState<number[]>([]);
-	const order = sortType?.includes("-") ? "asc" : "desc";
-	const sortBy = sortType?.replace("-", "");
-	const category = categoryId > 0 ? `category=${categoryId}` : "";
-	const search = searchValue ? `&search=${searchValue}` : "";
 
-	// Если бы первый рендер, то проверяем URL-параметры и сохраняем в редаксе
-	useEffect(() => {
-		if (window.location.search) {
-			const params = qs.parse(window.location.search.substring(1));
-			const sort = sortList.find(
-				(obj) => obj.sortProperty === params.sortType
-			);
+export const CartList: FC<CardListProps> = (): JSX.Element => {
+    const dispatch = useDispatch();
 
-			dispatch(
-				setFilters({
-					...params,
-					sort,
-				})
-			);
-			isSearch.current = true;
-		}
-	}, []);
+    const {items, status} = useSelector(selectPizza);
+    const {categoryId, sort, currentPage, searchValue} = useSelector(selectFilter);
 
-	// fetchPizzas
-	const fetchPizzas = () => {
-		setIsLoading(true);
-		const LoadData = async () => {
-			try {
-				const { data } = await axios.get(
-					`${PRODUCT_DATA}page=${currentPage}&limit=6&${category}&sortBy=${sortBy}&order=${order}${search}`
-				);
-				setProductArray(data);
-				setIsLoading(false);
-			} catch (error) {
-				alert("Не удалось получить данные, попробуйте позже.");
-			}
-		};
-		window.scrollTo(0, 0);
-		return LoadData();
+    const onChangeCategory = useCallback((idx: number) => {
+        dispatch(setCategoryId(idx))
+    }, [])
 
-	};
 
-	// loading data
-	useEffect(() => {
-		window.scrollTo(0, 0);
+    // fetchPizzas
+    const fetchPizzas = () => {
+        const sortBy = sort.sortProperty.replace('-', '');
+        const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+        const category = categoryId > 0 ? String(categoryId) : '';
+        const search = searchValue;
 
-		if (!isSearch.current) {
-			fetchPizzas();
-		}
 
-		isSearch.current = false;
-	}, [categoryId, sortType, searchValue, currentPage]);
-	//
+        dispatch(
+            getPizzas({
+                sortBy,
+                order,
+                category,
+                search,
+                currentPage: String(currentPage),
+            }),
+        );
 
-	// Если изменили параметры и был первый рендер
-	useEffect(() => {
-		if (isMounted.current) {
-			const queryString = qs.stringify({
-				sortType,
-				categoryId,
-				currentPage,
-			});
+    };
+    
+    console.log(categoryId)
+    // Если изменили параметры и был первый рендер
+    useEffect(() => {
+        fetchPizzas();
+    }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+    console.log(items)
 
-			navigate(`?${queryString}`);
-		}
-		isMounted.current = true;
-	}, [categoryId, sortType, searchValue, currentPage]);
+    // filtredPizzas
+    const pizzas = items.map((obj: any) => <CartItem
+        key={obj.id}
+        id={obj.id}
+        children={obj.title}
+        cartDescr={obj.types}
+        image={obj.imageUrl}
+        cartSize={obj.sizes}
+        price={obj.price}
 
-	// filtredPizzas
-	const pizzas = productArray
-		.filter((item: any) => {
-			if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {
-				return true;
-			}
+    />)
+    const skeletonLoader = [...new Array(9)].map((_, index) => (
+        <SkeletonLoader
+            key={index}
+            className={styles.skeleton}
+        ></SkeletonLoader>
+    ));
 
-			return false;
-		})
-		.map((item: any) => {
-			return (
-				<Link key={item.id} to={`/pizza/${item.id}`}>
-				<CartItem
-					sizes={item.size}
-					id={item.id}
-					image={item.imageUrl}
-					cartDescr={item.types}
-					cartSize={item.sizes}
-					price={item.price}
-					category={item.category}
-					rating={item.rating}
-				>
-					{item.title}
-				</CartItem>
-				</Link>
-			);
-		});
-
-	// SkeletonLoader
-
-	const skeletonLoader = [...new Array(9)].map((_, index) => (
-		<SkeletonLoader
-			key={index}
-			className={styles.skeleton}
-		></SkeletonLoader>
-	));
-
-	return (
-		<>
-			{pizzas.length === 0 ? (
-				<NotFound></NotFound>
-			) : (
-				<div className={styles.gridInner}>
-					{isLoading ? skeletonLoader : pizzas}
-				</div>
-			)}
-		</>
-	);
+    return (
+        <>
+            <div className={styles.container}>
+                <Categories
+                    value={categoryId}
+                    onChangeCategory={onChangeCategory}
+                ></Categories>
+                <Sort value={sort}></Sort>
+            </div>
+            {pizzas.length === 0 ? (
+                <NotFound></NotFound>
+            ) : (
+                <div className={styles.gridInner}>
+                    {status === "loading" ? skeletonLoader : pizzas}
+                </div>
+            )}
+        </>
+    );
 };

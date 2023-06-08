@@ -1,5 +1,6 @@
 .wrapper {
 	display: flex;
+	align-items: center;
 }
 
 .sortContainer {
@@ -35,11 +36,12 @@
 .popup {
 	position: absolute;
 	z-index: 1;
-	transform: translateX(120px) translateY(15px);
+	transform: translateX(120px) translateY(160px);
 	background: #ffffff;
 	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
 	border-radius: 10px;
 	padding-top: 13px;
+	width: 180px;
 	padding-bottom: 10px;
 	@media (max-width: 1500px) {
 		transform: translateX(50%) translateY(20px);

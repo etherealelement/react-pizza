@@ -25,7 +25,8 @@ export const CartItem: FC<CartItemProps> = ({
 	const [activeType, setType] = useState(0);
 	const [activeBlock, setActive] = useState(0);
 	const addedCount = cartItem ? cartItem.count : 0;
-
+	console.log(cartItem)
+	
 	const onClickAdd = () => {
 		const item: OnClickItemProps = {
 			id,
