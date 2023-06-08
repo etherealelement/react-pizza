@@ -7,7 +7,7 @@ export interface PizzaSliceInterface {
 
 export type FetchPizzasTypes = Record<string, string>;
 
-type PizzaItem = {
+export type PizzaItem = {
     id: string;
     title: string;
     price: number;
