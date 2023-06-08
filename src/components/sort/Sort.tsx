@@ -9,6 +9,8 @@ import {SortListProps} from "./Sort.props";
 import {MouseEvent} from "react";
 
 
+
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const sortList: SortListProps[] = [
 	{ name: "популярности (DESC)", sortProperty: "rating" },
