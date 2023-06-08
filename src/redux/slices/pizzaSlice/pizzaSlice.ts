@@ -2,10 +2,10 @@ import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {PRODUCT_DATA} from "../../../helpers/serverURL.ts";
 import axios from "axios";
 import {RootState} from "../../store.ts";
-import {FetchPizzasTypes, PizzaItem, PizzaSliceInterface, Status} from "./pizzaSlice.interfaces.ts";
+import { PizzaItem, PizzaSliceInterface, Status, SearchPizzaParams} from "./pizzaSlice.interfaces.ts";
 
 
-export const getPizzas = createAsyncThunk<PizzaItem[], FetchPizzasTypes>(
+export const getPizzas = createAsyncThunk<PizzaItem[], SearchPizzaParams>(
     "pizza/fetchPizzasStatus",
     async (params) => {
         const {order, sortBy, category, search, currentPage} = params;

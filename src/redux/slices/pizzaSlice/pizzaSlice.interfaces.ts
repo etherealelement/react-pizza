@@ -7,6 +7,15 @@ export interface PizzaSliceInterface {
 
 export type FetchPizzasTypes = Record<string, string>;
 
+export type SearchPizzaParams =  {
+    sortBy: string;
+    order: string;
+    category: string;
+    search: string;
+    currentPage: string;
+}
+
+
 export type PizzaItem = {
     id: string;
     title: string;

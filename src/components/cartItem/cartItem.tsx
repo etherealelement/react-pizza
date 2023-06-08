@@ -41,11 +41,11 @@ export const CardItem: FC<CardItemProps> = ({
 		<>
 			<li className={styles.cartItem}>
 				<div className={styles.cartItemBlock}>
-					<img
-						src={image}
-						alt={title}
-						className={styles.cartItemBlockImg}
-					/>
+							<img
+								src={image}
+								alt={title}
+								className={styles.cartItemBlockImg}
+							/>
 					<span>
 						<h3 className={styles.cartItemBlockTitle}>{title}</h3>
 						<p className={styles.cartItemBlockDescr}>
