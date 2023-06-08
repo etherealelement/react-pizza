@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { MainLayout } from "./layouts/MainLayout";
 // context
+// @ts-ignore
 export const SearchContext:React.Context<string> = createContext();
 
 function App():JSX.Element {

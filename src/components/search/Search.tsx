@@ -1,4 +1,4 @@
-import { FC, useContext, useRef, useCallback, useState } from "react";
+import {FC, useContext, useRef, useCallback, useState, ChangeEvent} from "react";
 import { SearchProps } from "./Search.props";
 import styles from "./Search.module.scss";
 import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_search_icon.svg";
@@ -26,7 +26,7 @@ export const Search: FC<SearchProps> = ({
 			setSearchValue(str);	
 		}, 1000), [],
 	)
-	const onChangeInput = (event: any) => {
+	const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
 		setValue(event.target.value);
 		updateSearchValue(event.target.value);
 	}

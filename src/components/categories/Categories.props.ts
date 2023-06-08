@@ -3,5 +3,11 @@ import { DetailedHTMLProps } from 'react';
 
 export interface CategoriesProps extends DetailedHTMLProps<HTMLAttributes<HTMLUListElement>,HTMLUListElement>{
   value?: number;
-  onChangeCategory: (item: any) => any;
+  onChangeCategory: (id: number) => void;
+}
+
+export interface UlArrayProps {
+  name: string;
+  state?: string | number;
+  id: number;
 }

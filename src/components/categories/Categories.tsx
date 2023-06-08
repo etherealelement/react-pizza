@@ -9,7 +9,7 @@ export const Categories: FC<CategoriesProps> = ({
 	value,
 	onChangeCategory,
 }: CategoriesProps): JSX.Element => {
-
+	console.log(ulArray);
 	return (
 		<ul className={styles.listContainer}>
 			{ulArray.map((item: any, index: number) => (
