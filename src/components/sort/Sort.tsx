@@ -1,24 +1,20 @@
-import {FC, useState, useRef, useEffect} from "react";
+import {FC, MouseEvent, useEffect, useRef, useState} from "react";
 import styles from "./Sort.module.scss";
-import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
-import { SortProps } from "./Sort.props";
-import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../../redux/slices/filterSlice/filterSlice.ts";
-import { selectSort } from "../../redux/slices/filterSlice/filterSlice.ts";
-import {SortListProps} from "./Sort.props";
-import {MouseEvent} from "react";
-
-
+import {ReactComponent as ArrowIcon} from "../../assets/arrow-top.svg";
+import {SortListProps, SortProps} from "./Sort.props";
+import {useDispatch, useSelector} from "react-redux";
+import {selectSort, setSort} from "../../redux/slices/filterSlice/filterSlice.ts";
+import {SortPropertyEnum} from "../../redux/slices/filterSlice/filterSlice.interfaces.ts";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const sortList: SortListProps[] = [
-	{ name: "популярности (DESC)", sortProperty: "rating" },
-	{ name: "популярности (ASC)", sortProperty: "-rating" },
-	{ name: "цене(DESC)", sortProperty: "price" },
-	{ name: "цене(ASC)", sortProperty: "-price" },
-	{ name: "алфавиту(DESC)", sortProperty: "title" },
-	{ name: "алфавиту(ASK)", sortProperty: "-title" },
+	{ name: "популярности (DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
+	{ name: "популярности (ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
+	{ name: "цене(DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
+	{ name: "цене(ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
+	{ name: "алфавиту(DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
+	{ name: "алфавиту(ASK)", sortProperty: SortPropertyEnum.TITLE_ASC},
 ];
 
 type PopupClick = MouseEvent & {

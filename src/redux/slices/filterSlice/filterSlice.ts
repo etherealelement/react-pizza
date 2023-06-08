@@ -1,7 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../store.ts";
-import {FilterSliceState} from "./filterSlice.interfaces.ts";
-import {SortType} from "./filterSlice.interfaces.ts";
+import {FilterSliceState, SortPropertyEnum, SortType} from "./filterSlice.interfaces.ts";
 
 
 const initialState:FilterSliceState = {
@@ -10,7 +9,7 @@ const initialState:FilterSliceState = {
   currentPage: 1,
   sort: {
     name: "популярности",
-    sortProperty: "price"
+    sortProperty: SortPropertyEnum.RATING_DESC
   }
 };
 
@@ -42,7 +41,7 @@ const filterSlice = createSlice({
         state.categoryId = 0;
         state.sort = {
           name: "популярности",
-          sortProperty: "rating",
+          sortProperty: SortPropertyEnum.RATING_DESC,
         }
       }
     }

@@ -1,9 +1,10 @@
 import { HTMLAttributes } from 'react';
 import { DetailedHTMLProps } from 'react';
+import {SortType} from "../../redux/slices/filterSlice/filterSlice.interfaces.ts";
 
 export interface CardListProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   categoryId: number;
-  sortType?: string;
+  sortType?: SortType;
   searchValue?: string;
   currentPage?: number;
 } 
