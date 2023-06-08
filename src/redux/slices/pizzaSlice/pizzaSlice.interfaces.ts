@@ -5,6 +5,8 @@ export interface PizzaSliceInterface {
     status:  StatusType;
 }
 
+export type FetchPizzasTypes = Record<string, string>;
+
 type PizzaItem = {
     id: string;
     title: string;

@@ -3,14 +3,15 @@ import { PRODUCT_DATA } from "../../../helpers/serverURL.ts";
 import axios from "axios";
 import {RootState} from "../../store.ts";
 import {PizzaSliceInterface} from "./pizzaSlice.interfaces.ts";
+import {FetchPizzasTypes} from "./pizzaSlice.interfaces.ts";
+import {CartSliceInterfaces} from "../cartSlice/cartSlice.interfaces.ts";
 
-
-export const getPizzas = createAsyncThunk(
+export const getPizzas = createAsyncThunk<CartSliceInterfaces[], FetchPizzasTypes>(
 	"pizza/fetchPizzasStatus",
-	async (params, thunkApi) => {
+	async (params:FetchPizzasTypes) => {
 		const { order, sortBy, category, search, currentPage } = params;
 
-		const { data } = await axios.get(
+		const { data } = await axios.get<CartSliceInterfaces[]>(
 			`${PRODUCT_DATA}page=${currentPage}&limit=6&${category}&sortBy=${sortBy}&order=${order}${search}`
     );
     
