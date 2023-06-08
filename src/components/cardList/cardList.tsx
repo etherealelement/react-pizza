@@ -9,7 +9,7 @@ import { SearchContext } from "../../App";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 import { sortList } from "../sort/Sort";
-import { setFilters } from "../../redux/slices/filterSlice";
+import { setFilters } from "../../redux/slices/filterSlice/filterSlice.ts";
 import { NotFound } from "../notfound/NotFound";
 import { Link } from "react-router-dom";
 import {useDispatch} from "react-redux";

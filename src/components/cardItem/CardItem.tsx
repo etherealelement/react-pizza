@@ -3,8 +3,8 @@ import styles from "./CardItem.module.scss";
 import { CartItemProps } from "./CardItem.props";
 import { Button } from "../ui/button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import {addItem} from "../../redux/slices/cartSlice";
-import { selectCartItemById } from "../../redux/slices/cartSlice";
+import {addItem} from "../../redux/slices/cartSlice/cartSlice.ts";
+import { selectCartItemById } from "../../redux/slices/cartSlice/cartSlice.ts";
 import {OnClickItemProps} from "./CardItem.props";
 
 

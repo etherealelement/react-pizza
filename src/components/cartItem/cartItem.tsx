@@ -4,7 +4,7 @@ import { CardItemProps } from "./cartItem.props";
 import { ReactComponent as PlusItem } from "../../assets/plusicon.svg";
 import { ReactComponent as MinusItem } from "../../assets/minus.svg";
 import { useDispatch } from "react-redux";
-import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice";
+import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice/cartSlice.ts";
 
 export const CardItem: FC<CardItemProps> = ({
 	id,

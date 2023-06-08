@@ -3,8 +3,8 @@ import styles from "./Sort.module.scss";
 import { ReactComponent as ArrowIcon } from "../../assets/arrow-top.svg";
 import { SortProps } from "./Sort.props";
 import { useSelector, useDispatch } from "react-redux";
-import { setSort } from "../../redux/slices/filterSlice";
-import { selectSort } from "../../redux/slices/filterSlice";
+import { setSort } from "../../redux/slices/filterSlice/filterSlice.ts";
+import { selectSort } from "../../redux/slices/filterSlice/filterSlice.ts";
 import {SortListProps} from "./Sort.props";
 import {MouseEvent} from "react";
 

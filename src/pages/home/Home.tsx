@@ -6,7 +6,7 @@ import styles from "./Home.module.scss";
 import { HomeProps } from "./Home.props";
 import { Pagination } from "../../components/pagination/Pagination";
 import { useSelector, useDispatch } from "react-redux";
-import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice";
+import { setCategoryId, setCurrentPage } from "../../redux/slices/filterSlice/filterSlice.ts";
 
 
 

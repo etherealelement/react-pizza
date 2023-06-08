@@ -8,7 +8,7 @@ import { ReactComponent as ArrowGhost } from "../../../assets/ghost-arrow.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CardItem } from "../../../components/cartItem/cartItem";
-import { clearItems, removeItem } from "../../../redux/slices/cartSlice";
+import { clearItems, removeItem } from "../../../redux/slices/cartSlice/cartSlice.ts";
 import { EmptyCard } from "../../../components/emptyCard/EmptyCart";
 
 export const Cart: FC = (): JSX.Element => {
