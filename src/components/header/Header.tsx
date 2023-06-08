@@ -18,7 +18,6 @@ export const Header: FC<HeaderProps> = ({
 	const totalCount = items.reduce((acc:number, item: any) => {
 		return acc + item.count;
 	}, 0)
-console.log(totalPrice)
 
 
 	return (

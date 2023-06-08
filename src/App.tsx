@@ -2,10 +2,10 @@ import { createContext, useState } from "react";
 import { MainLayout } from "./layouts/MainLayout";
 // context
 // @ts-ignore
-export const SearchContext:React.Context<string> = createContext();
+export const SearchContext: ProviderProps<string> = createContext<string>();
 
 function App():JSX.Element {
-	const [searchValue, setSearchValue] = useState("");
+	const [searchValue, setSearchValue] = useState<string>("");
 	// счетчик на Redux
 
 

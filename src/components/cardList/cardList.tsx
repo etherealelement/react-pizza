@@ -96,7 +96,6 @@ export const CartList: FC<CardListProps> = ({
 	}, [categoryId, sortType, searchValue, currentPage]);
 
 	// filtredPizzas
-	console.log(productArray);
 	const pizzas = productArray
 		.filter((item: any) => {
 			if (item.title.toLowerCase().includes(searchValue.toLowerCase())) {

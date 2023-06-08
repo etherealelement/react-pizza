@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setSort } from "../../redux/slices/filterSlice";
 import { selectSort } from "../../redux/slices/filterSlice";
 import {SortListProps} from "./Sort.props";
+import {MouseEvent} from "react";
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const sortList: SortListProps[] = [
@@ -16,6 +18,11 @@ export const sortList: SortListProps[] = [
 	{ name: "алфавиту(DESC)", sortProperty: "title" },
 	{ name: "алфавиту(ASK)", sortProperty: "-title" },
 ];
+
+type PopupClick = MouseEvent & {
+	composedPath: () => Node[];
+}
+
 
 export const Sort: FC<SortProps> = (): JSX.Element => {
 	const dispatch = useDispatch();
@@ -28,13 +35,16 @@ export const Sort: FC<SortProps> = (): JSX.Element => {
 	};
 
 	useEffect(() => {
-		const handleClickOutside = (e: any) => {
-			if (!e.composedPath().includes(sortRef.current)) {
+		const handleClickOutside = (e: any):void => {
+			const _event:PopupClick = e as PopupClick;
+
+			if (sortRef.current && !_event.composedPath().includes(sortRef.current)) {
 				setVisiblePopup(false)
 			}
 		}
 
-		document.body.addEventListener("click", handleClickOutside);
+
+		document.body.addEventListener("click",handleClickOutside);
 		return () => {
 			document.body.removeEventListener("click", handleClickOutside);
 		}
