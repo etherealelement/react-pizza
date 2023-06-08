@@ -1,6 +1,6 @@
 type sortPropertyTypes = "rating" | "title" | "price" | "-rating" | "-title" | "-price"
 
-type SortType = {
+export type SortType = {
     name: string,
     sortProperty: sortPropertyTypes;
 }

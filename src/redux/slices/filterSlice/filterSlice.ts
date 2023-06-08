@@ -1,7 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {RootState} from "../../store.ts";
 import {FilterSliceState} from "./filterSlice.interfaces.ts";
-
+import {SortType} from "./filterSlice.interfaces.ts";
 
 
 const initialState:FilterSliceState = {
@@ -23,16 +23,16 @@ const filterSlice = createSlice({
     },
 
 
-    setCategoryId(state, action) {
+    setCategoryId(state, action:PayloadAction<number>) {
       state.categoryId = action.payload;
     },
-    setSort(state, action) {
+    setSort(state, action:PayloadAction<SortType>) {
       state.sort = action.payload;
     },
-    setCurrentPage(state, action) { 
+    setCurrentPage(state, action:PayloadAction<number>) {
       state.currentPage = action.payload;
     },
-    setFilters(state, action) { 
+    setFilters(state, action:PayloadAction<FilterSliceState>) {
       if (Object.keys(action.payload). length) {
         state.currentPage = Number(action.payload.currentPage);
         state.sort = action.payload.sort;

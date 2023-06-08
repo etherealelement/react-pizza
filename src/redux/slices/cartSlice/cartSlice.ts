@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../store.ts";
 import {CartSliceInterfaces} from "./cartSlice.interfaces.ts";
 

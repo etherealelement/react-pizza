@@ -6,7 +6,7 @@ import { ReactComponent as CartIcon } from "../../assets/shopping-cart.svg";
 import { Link, useLocation } from "react-router-dom";
 import { Search } from "../search/Search";
 import { useSelector } from "react-redux";
-import { selectCart } from "../../redux/slices/pizzaSlice";
+import { selectCart } from "../../redux/slices/pizzaSlice/pizzaSlice.ts";
 
 export const Header: FC<HeaderProps> = ({
 	children,

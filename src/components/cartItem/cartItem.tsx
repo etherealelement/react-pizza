@@ -6,6 +6,7 @@ import { ReactComponent as MinusItem } from "../../assets/minus.svg";
 import { useDispatch } from "react-redux";
 import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice/cartSlice.ts";
 
+
 export const CardItem: FC<CardItemProps> = ({
 	id,
 	price,
@@ -21,7 +22,7 @@ export const CardItem: FC<CardItemProps> = ({
 	const onClickPlus = () => {
 		dispatch(
 			addItem({
-				id,
+				id
 			})
 		);
 	};
