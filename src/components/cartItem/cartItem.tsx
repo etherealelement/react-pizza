@@ -5,7 +5,7 @@ import { ReactComponent as PlusItem } from "../../assets/plusicon.svg";
 import { ReactComponent as MinusItem } from "../../assets/minus.svg";
 import { useDispatch } from "react-redux";
 import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice/cartSlice.ts";
-
+import clsx from "clsx";
 
 export const CardItem: FC<CardItemProps> = ({
 	id,
@@ -55,7 +55,10 @@ export const CardItem: FC<CardItemProps> = ({
 				</div>
 				<div className={styles.cartItemCounter}>
 					<span>
-						<button onClick={onClickMinus}>
+						<button
+							className={clsx({[styles.disableBtnMinus]: count === 1})}
+							disabled={count === 1}
+							onClick={onClickMinus}>
 							<MinusItem></MinusItem>
 						</button>
 						{count}
