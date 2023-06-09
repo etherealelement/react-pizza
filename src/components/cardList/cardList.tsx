@@ -5,7 +5,7 @@ import {SkeletonLoader} from "../../helpers/skeleton";
 import {CardListProps} from "./cardList.props";
 import {selectFilter, setCategoryId} from "../../redux/slices/filterSlice/filterSlice.ts";
 import {NotFound} from "../notfound/NotFound";
-import { useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {getPizzas, selectPizza} from "../../redux/slices/pizzaSlice/pizzaSlice.ts";
 import {Categories} from "../categories/Categories.tsx";
 import {Sort} from "../sort/Sort.tsx";
@@ -14,7 +14,6 @@ import {useAppDispatch} from "../../redux/store.ts";
 
 export const CartList: FC<CardListProps> = (): JSX.Element => {
     const dispatch = useAppDispatch();
-
     const {items, status} = useSelector(selectPizza);
     const {categoryId, sort, currentPage, searchValue} = useSelector(selectFilter);
 
@@ -30,7 +29,6 @@ export const CartList: FC<CardListProps> = (): JSX.Element => {
         const category = categoryId > 0 ? String(categoryId) : '';
         const search = searchValue;
 
-
         dispatch(
             getPizzas({
                 sortBy,
@@ -42,24 +40,22 @@ export const CartList: FC<CardListProps> = (): JSX.Element => {
         );
 
     };
-    
-    console.log(categoryId)
+
     // Если изменили параметры и был первый рендер
     useEffect(() => {
         fetchPizzas();
     }, [categoryId, sort.sortProperty, searchValue, currentPage]);
-    console.log(items)
 
     // filtredPizzas
     const pizzas = items.map((obj: any) => <CartItem
         key={obj.id}
         id={obj.id}
-        children={obj.title}
-        cartDescr={obj.types}
-        image={obj.imageUrl}
-        cartSize={obj.sizes}
+        title={obj.title}
+        types={obj.types}
+        imageUrl={obj.imageUrl}
+        size={obj.sizes}
         price={obj.price}
-
+        rating={obj.rating}
     />)
     const skeletonLoader = [...new Array(9)].map((_, index) => (
         <SkeletonLoader

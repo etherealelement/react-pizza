@@ -10,11 +10,13 @@ export const FullPizza: FC = (): JSX.Element => {
     const [data, setData] = useState<FullPizzaProps>();
     const navigate = useNavigate();
 
+
+    
     useEffect(() => {
         const loadData = async (): Promise<void> => {
             try {
                 const {data} = await axios.get(
-                    "https://64732640d784bccb4a3c4d81.mockapi.io/items/" + id
+                    "https://64732640d784bccb4a3c4d81.mockapi.io/items/" + {id}
                 );
                 setData(data);
             } catch (error) {

@@ -4,11 +4,11 @@ import { ListItems } from "../ui/listItems/ListItems";
 import { CategoriesProps } from "./Categories.props";
 import { ulArray } from "../../helpers/categoriesUlArray";
 
-
 export const Categories: FC<CategoriesProps> = ({
 	value,
 	onChangeCategory,
 }: CategoriesProps): JSX.Element => {
+
 	return (
 		<ul className={styles.listContainer}>
 			{ulArray.map((item: any, index: number) => (

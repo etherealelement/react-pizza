@@ -23,11 +23,7 @@ export const Home: FC<HomeProps> = (): JSX.Element => {
 	return (
 		<>
 			<div className={styles.container}>
-				<div className={styles.filterWrapper}>
-
-				</div>
 				<h2 className={styles.cartTitle}>Все пиццы</h2>
-
 				<CartList
 					currentPage={currentPage}
 					categoryId={categoryId}

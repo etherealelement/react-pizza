@@ -1,30 +1,43 @@
-import { FC } from "react";
+import {FC, useState} from "react";
 import styles from "./cartItem.module.scss";
 import { CardItemProps } from "./cartItem.props";
 import { ReactComponent as PlusItem } from "../../assets/plusicon.svg";
 import { ReactComponent as MinusItem } from "../../assets/minus.svg";
-import { useDispatch } from "react-redux";
-import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice/cartSlice.ts";
+import {useDispatch, useSelector} from "react-redux";
+import {addItem, minusItem, removeItem, selectCartItemById} from "../../redux/slices/cartSlice/cartSlice.ts";
 import clsx from "clsx";
+import {CartItemProps} from "../cardItem/CardItem.props.ts";
+
+const typeNames = ["тонкое", "традиционное"];
 
 export const CardItem: FC<CardItemProps> = ({
 	id,
 	price,
-	descr,
+	types,
 	title,
-	image,
-	count,
+	imageUrl,
 	size,
+	count
 }: CardItemProps): JSX.Element => {
-	const productSizes = [26, 30, 40];
-	const dispatch = useDispatch();
+	const dispatch =useDispatch();
+	const cartItem = useSelector(selectCartItemById(id))
+	const [activeType, setActiveType] = useState(0);
+	const [activeSize, setActiveSize] = React.useState(0);
 
-	const onClickPlus = () => {
-		dispatch(
-			addItem({
-				id
-			})
-		);
+
+	const addedCount = cartItem ? cartItem.count : 0;
+
+	const onClickAdd = () => {
+		const item: CartItemProps = {
+			id,
+			title,
+			price,
+			imageUrl,
+			type: typeNames[activeType],
+			size: size[activeSize],
+			count: 0,
+		};
+		dispatch(addItem(item))
 	};
 
 	const onClickMinus = () => {

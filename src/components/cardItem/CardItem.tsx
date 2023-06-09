@@ -12,7 +12,7 @@ const cartType: string[] = ["тонкое", "традиционное"]
 
 
 export const CartItem: FC<CartItemProps> = ({
-                                                id,
+                                                itemId,
                                                 children,
                                                 cartDescr,
                                                 image,
@@ -20,15 +20,14 @@ export const CartItem: FC<CartItemProps> = ({
                                                 price,
                                             }: CartItemProps): JSX.Element => {
     const dispatch = useDispatch();
-    const cartItem = useSelector(selectCartItemById(id));
+    const cartItem = useSelector(selectCartItemById(itemId));
     const [activeType, setType] = useState(0);
     const [activeBlock, setActive] = useState(0);
     const addedCount = cartItem ? cartItem.count : 0;
-    console.log(cartItem)
 
     const onClickAdd = () => {
         const item: OnClickItemProps = {
-            id,
+            itemId,
             children,
             price,
             image,
@@ -42,10 +41,10 @@ export const CartItem: FC<CartItemProps> = ({
         <>
             <div className={styles.cartItem}>
                 <div className={styles.cartItemWrapper}>
-                    <Link key={id} to={`/pizza/${id}`}>
+                    <Link key={itemId} to={`/pizza/${itemId}`}>
                         <img src={image} className={styles.cartItemImage} alt="cart-image"/>
                     </Link>
-                    <Link key={id} to={`/pizza/${id}`}>
+                    <Link key={itemId} to={`/pizza/${itemId}`}>
                         <h2 className={styles.cartItemTitle}>{children}</h2>
                     </Link>
                     <div className={styles.cartItemSelector}>
@@ -82,7 +81,7 @@ export const CartItem: FC<CartItemProps> = ({
                     </div>
                     <div className={styles.cartItemPriceBLock}>
                         <b className={styles.cartItemPrice}>от {price} ₽</b>
-                        <Button addedCount={addedCount} cartItem={cartItem} onClickAdd={() => onClickAdd()}
+                        <Button key={itemId} addedCount={addedCount} cartItem={cartItem} onClickAdd={() => onClickAdd()}
                                 isPlus={true} variant={"default"}>
                             Добавить
                         </Button>

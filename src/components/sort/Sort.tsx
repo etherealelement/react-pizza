@@ -1,9 +1,9 @@
 import {FC, MouseEvent, useEffect, useRef, useState} from "react";
 import styles from "./Sort.module.scss";
 import {ReactComponent as ArrowIcon} from "../../assets/arrow-top.svg";
-import {SortListProps, SortProps} from "./Sort.props";
-import {useDispatch, useSelector} from "react-redux";
-import {selectSort, setSort} from "../../redux/slices/filterSlice/filterSlice.ts";
+import {SortListProps, SortValueProps} from "./Sort.props";
+import {useDispatch} from "react-redux";
+import { setSort} from "../../redux/slices/filterSlice/filterSlice.ts";
 import {SortPropertyEnum} from "../../redux/slices/filterSlice/filterSlice.interfaces.ts";
 
 
@@ -22,9 +22,8 @@ type PopupClick = MouseEvent & {
 }
 
 
-export const Sort: FC<SortProps> = (): JSX.Element => {
+export const Sort: FC<SortValueProps> = ({value}:SortValueProps): JSX.Element => {
 	const dispatch = useDispatch();
-	const sort = useSelector(selectSort);
 	const [visiblePopup, setVisiblePopup] = useState<boolean>(false);
 	const sortRef= useRef<HTMLDivElement>(null);
 	const onClickListItem = (i: SortListProps) => {
@@ -60,7 +59,7 @@ export const Sort: FC<SortProps> = (): JSX.Element => {
 						onClick={() => setVisiblePopup(!visiblePopup)}
 						className={styles.span}
 					>
-						{sort?.name}
+						{value.name}
 					</span>
 				</div>
 
@@ -71,7 +70,7 @@ export const Sort: FC<SortProps> = (): JSX.Element => {
 								key={index}
 								onClick={() => onClickListItem(obj)}
 								className={
-									sort?.sortProperty === obj.sortProperty ? styles.active : ""
+									value.sortProperty === obj.sortProperty ? styles.active : ""
 								}
 							>
 								{obj.name}

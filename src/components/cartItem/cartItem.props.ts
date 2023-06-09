@@ -5,7 +5,7 @@ import { DetailedHTMLProps } from 'react';
 
 
 export interface CardItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { 
-    descr?: string;
+    types?: string;
     image?: string;
     count: number;
     children?: ReactNode;

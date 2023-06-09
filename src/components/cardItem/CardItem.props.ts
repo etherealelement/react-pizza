@@ -2,21 +2,18 @@ import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
 
 
 export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>,HTMLDivElement> {
-    image: string;
-    children: ReactNode;
-    cartDescr: string[];
-    cartSize: number[];
-    price?: number;
-    activeType?: number;
-    itemId?: number;
-    category?: number;
-    rating?: number;
-    sizes?: number;
+    id: string;
+    title: string;
+    price: number;
+    imageUrl: string;
+    size: number[];
+    types: number[];
+    rating: number;
 }
 
 
 export interface  OnClickItemProps {
-    id: number | string | undefined,
+    itemId: number | string | undefined,
     children?:  ReactNode;
     price: number | string | undefined,
     image: string,
