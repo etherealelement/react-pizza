@@ -5,11 +5,11 @@ import {getCartFromLS} from "../../../helpers/getCartFromLS.ts";
 import {calcTotalPrice} from "../../../helpers/calcTotalPrice.ts";
 
 
-const cartData = getCartFromLS();
+const {items, totalPrice} = getCartFromLS();
 
 const initialState:CartSliceInterfaces = {
-  totalPrice: cartData.totalPrice,
-  items: cartData.items,
+  totalPrice,
+  items
 };
 
 const cartSlice = createSlice({ 
