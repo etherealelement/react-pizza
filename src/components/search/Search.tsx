@@ -36,7 +36,6 @@ export const Search: FC<SearchProps> = ({
 					value={value}
 					onChange={onChangeInput}
 					placeholder={children}
-					type="text"
 					className={styles.rootInput}
 				/>
 				<SearchIcon className={styles.rootInputIcon}></SearchIcon>

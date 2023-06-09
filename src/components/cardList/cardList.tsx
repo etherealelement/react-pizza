@@ -28,7 +28,7 @@ export const CartList: FC<CardListProps> = (): JSX.Element => {
         const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
         const category = categoryId > 0 ? String(categoryId) : '';
         const search = searchValue;
-
+        console.log(search)
         dispatch(
             getPizzas({
                 sortBy,
@@ -53,7 +53,7 @@ export const CartList: FC<CardListProps> = (): JSX.Element => {
         title={obj.title}
         types={obj.types}
         imageUrl={obj.imageUrl}
-        size={obj.sizes}
+        sizes={obj.sizes}
         price={obj.price}
         rating={obj.rating}
     />)

@@ -1,38 +1,39 @@
 import {FC, useState} from "react";
 import styles from "./CardItem.module.scss";
-import {CartItemProps} from "./CardItem.props";
+import {ICartItemProps, PizzaBlockProps} from "./CardItem.props";
 import {Button} from "../ui/button/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {addItem} from "../../redux/slices/cartSlice/cartSlice.ts";
 import {selectCartItemById} from "../../redux/slices/cartSlice/cartSlice.ts";
-import {OnClickItemProps} from "./CardItem.props";
 import {Link} from "react-router-dom";
 
-const cartType: string[] = ["тонкое", "традиционное"]
+
+const typeNames = ['тонкое', 'традиционное'];
 
 
-export const CartItem: FC<CartItemProps> = ({
-                                                itemId,
-                                                children,
-                                                cartDescr,
-                                                image,
-                                                cartSize,
+export const CartItem: FC<PizzaBlockProps> = ({
+                                                id,
+                                                title,
                                                 price,
-                                            }: CartItemProps): JSX.Element => {
+                                                imageUrl,
+                                                sizes,
+                                                types,
+                                            }: PizzaBlockProps): JSX.Element => {
     const dispatch = useDispatch();
-    const cartItem = useSelector(selectCartItemById(itemId));
-    const [activeType, setType] = useState(0);
-    const [activeBlock, setActive] = useState(0);
+    const cartItem = useSelector(selectCartItemById(id));
+    const [activeType, setActiveType] = useState(0);
+    const [activeSize, setActiveSize] = useState(0);
     const addedCount = cartItem ? cartItem.count : 0;
 
     const onClickAdd = () => {
-        const item: OnClickItemProps = {
-            itemId,
-            children,
+        const item:ICartItemProps  = {
+            id,
+            title,
             price,
-            image,
-            type: cartType[activeType],
-            size: activeBlock,
+            imageUrl,
+            type: typeNames[activeType],
+            size: sizes[activeSize],
+            count: 0,
         };
         dispatch(addItem(item));
     }
@@ -41,34 +42,33 @@ export const CartItem: FC<CartItemProps> = ({
         <>
             <div className={styles.cartItem}>
                 <div className={styles.cartItemWrapper}>
-                    <Link key={itemId} to={`/pizza/${itemId}`}>
-                        <img src={image} className={styles.cartItemImage} alt="cart-image"/>
+                    <Link key={id} to={`/pizza/${id}`}>
+                        <img src={imageUrl} className={styles.cartItemImage} alt="cart-image"/>
                     </Link>
-                    <Link key={itemId} to={`/pizza/${itemId}`}>
-                        <h2 className={styles.cartItemTitle}>{children}</h2>
-                    </Link>
+                        <h2 className={styles.cartItemTitle}>{title}</h2>
                     <div className={styles.cartItemSelector}>
                         <ul>
-                            {cartDescr.map((item: any, index) => (
+                            {types.map((typeId) => (
                                 <li
-                                    onClick={() => setType(index)}
-                                    key={index}
+                                    onClick={() => setActiveType(typeId)}
+                                    key={typeId}
                                     className={
-                                        activeType === index
+                                        activeType === typeId
                                             ? styles.active
                                             : ""
                                     }
                                 >
-                                    {cartType[item]}
+                                    {typeNames[typeId]}
                                 </li>
+
                             ))}
                         </ul>
                         <ul>
-                            {cartSize.map((item, index) => (
+                            {sizes.map((item, index) => (
                                 <li
-                                    onClick={() => setActive(index)}
+                                    onClick={() => setActiveSize(index)}
                                     className={
-                                        activeBlock === index
+                                        activeSize === index
                                             ? styles.active
                                             : ""
                                     }
@@ -81,7 +81,7 @@ export const CartItem: FC<CartItemProps> = ({
                     </div>
                     <div className={styles.cartItemPriceBLock}>
                         <b className={styles.cartItemPrice}>от {price} ₽</b>
-                        <Button key={itemId} addedCount={addedCount} cartItem={cartItem} onClickAdd={() => onClickAdd()}
+                        <Button  addedCount={addedCount} cartItem={title} onClickAdd={onClickAdd}
                                 isPlus={true} variant={"default"}>
                             Добавить
                         </Button>

@@ -6,9 +6,30 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     title: string;
     price: number;
     imageUrl: string;
-    size: number[];
+    sizes: number[];
     types: number[];
     rating: number;
+}
+
+export type PizzaBlockProps = {
+    id: string;
+    title: string;
+    price: number;
+    imageUrl: string;
+    sizes: number[];
+    types: number[];
+    rating: number;
+};
+
+
+export interface  ICartItemProps {
+    id: string;
+    title: string;
+    price: number;
+    imageUrl: string;
+    type: string;
+    size: number;
+    count: number;
 }
 
 

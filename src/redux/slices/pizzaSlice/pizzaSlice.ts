@@ -9,7 +9,7 @@ export const getPizzas = createAsyncThunk<PizzaItem[], SearchPizzaParams>(
     "pizza/fetchPizzasStatus",
     async (params) => {
         const {order, sortBy, category, search, currentPage} = params;
-
+        console.log(search)
         const {data} = await axios.get<PizzaItem[]>(
             `${PRODUCT_DATA}page=${currentPage}&limit=6&${category}&sortBy=${sortBy}&order=${order}${search}`
         );
