@@ -1,4 +1,4 @@
-import { FC } from "react";
+import {FC, useEffect, useRef} from "react";
 import styles from "./Header.module.scss";
 import { HeaderProps } from "./Header.props";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
@@ -18,6 +18,15 @@ export const Header: FC<HeaderProps> = ({
 	const totalCount = items.reduce((acc:number, item: any) => {
 		return acc + item.count;
 	}, 0)
+	const isMounted = useRef(false)
+
+	useEffect(() => {
+		if(isMounted.current) {
+			const json = JSON.stringify((items))
+			localStorage.setItem("cart", json);
+		}
+		isMounted.current = true;
+	}, [items])
 
 
 	return (

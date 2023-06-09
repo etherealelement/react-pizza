@@ -1,12 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {RootState} from "../../store.ts";
 import {CartSliceInterfaces} from "./cartSlice.interfaces.ts";
+import {getCartFromLS} from "../../../helpers/getCartFromLS.ts";
+import {calcTotalPrice} from "../../../helpers/calcTotalPrice.ts";
 
 
+const cartData = getCartFromLS();
 
 const initialState:CartSliceInterfaces = {
-  totalPrice: 0,
-  items: []
+  totalPrice: cartData.totalPrice,
+  items: cartData.items,
 };
 
 const cartSlice = createSlice({ 
@@ -25,9 +28,7 @@ const cartSlice = createSlice({
         });
       }
 
-      state.totalPrice = state.items.reduce((acc, item) => {
-        return item.price * item.count + acc;
-      },0)
+    state.totalPrice = calcTotalPrice(state.items);
     },
     minusItem(state, action) {
       const findItem = state.items.find(obj => obj.id === action.payload);
