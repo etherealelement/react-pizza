@@ -3,13 +3,12 @@ export type CartItem = {
     title: string;
     price: number;
     imageUrl: string;
-    type: number;
+    type: string;
     size: number;
     count: number;
-}
+};
 
-
-export interface CartSliceInterfaces {
+export interface CartSliceState {
     totalPrice: number;
     items: CartItem[];
 }
