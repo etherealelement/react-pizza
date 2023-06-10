@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import {addItem,minusItem,removeItem} from "../../redux/cart/slice.ts";
 import clsx from "clsx";
 import {CartItem} from "../../redux/cart/types.ts";
-
+import {ReactComponent as RemoveItems} from "../../assets/searchIcons/removeIcon.svg"
 export const CardItem: FC<CardItemProps> = ({
                                                 id,
                                                 title,
@@ -71,7 +71,7 @@ export const CardItem: FC<CardItemProps> = ({
                         onClick={onClickRemove}
                         className={styles.cartItemPriceClose}
                     >
-                        <PlusItem></PlusItem>
+                        <RemoveItems></RemoveItems>
                     </button>
                 </div>
             </li>

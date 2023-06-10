@@ -57,12 +57,13 @@
       color: #000000;
 
       button {
-        background: none;
+      border: 1px solid #fe5f1e;
+        padding: 12px;
         border-radius: 50%;
+        background-color: #ffffff;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 11px;
         width: 32px;
         transition: all 0.3s ease-in-out;
 
@@ -87,27 +88,6 @@
         }
       }
     }
-
-    button {
-      background: none;
-      border: 2px solid #fe5f1e;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 11px;
-      width: 32px;
-      transition: all .3s ease-in-out;
-
-      &:hover {
-        fill: white;
-        background: #fe5f1e;
-      }
-
-      &:hover svg {
-        fill: white;
-      }
-    }
   }
 
   &Price {
@@ -116,10 +96,15 @@
     font-weight: bold;
     letter-spacing: 0.01em;
     color: #000000;
-
-    &Close {
-      border: 1px solid #ffff;
+    &Close{
+     border: none;
+      background-color: #ffffff;
+      &:hover{
+        transition: all .3s;
+        fill: #706262;
+        background-color: transparent;
+      }
     }
   }
-}
 
+}
