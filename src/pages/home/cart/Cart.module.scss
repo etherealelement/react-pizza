@@ -61,6 +61,14 @@
 		line-height: 27px;
 		letter-spacing: 0.01em;
 		color: #000000;
+		@media (max-width: 600px) {
+			font-size: 15px;
+		}
+		@media (max-width: 300px) {
+			font-size: 15px;
+		}
+
+
 		span {
 			font-weight: 700;
 		}
@@ -71,6 +79,12 @@
 		line-height: 27px;
 		letter-spacing: 0.01em;
 		color: #000000;
+		@media (max-width: 600px) {
+			font-size: 15px;
+		}
+		@media (max-width: 300px) {
+			font-size: 15px;
+		}
 		span {
 			font-weight: bold;
 			color: #fe5f1e;
@@ -101,6 +115,12 @@
 		&:hover {
 			background: #bdbaba;
 		}
+		@media (max-width: 600px) {
+			font-size: 15px;
+		}
+		@media (max-width: 300px) {
+			font-size: 15px;
+		}
 	}
 	&Payment {
 		background: #fe5f1e;
@@ -114,6 +134,14 @@
 		padding: 18px 18px;
 		transition: all 0.3s;
 		border: 1px solid #fe5f1e;
+
+		@media (max-width: 600px) {
+			font-size: 15px;
+		}
+		@media (max-width: 300px) {
+			font-size: 10px;
+		}
+
 		&:hover {
 			border: 1px solid #fe5f1e;
 			color: #fe5f1e;

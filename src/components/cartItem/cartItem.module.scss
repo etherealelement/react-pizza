@@ -1,8 +1,14 @@
 .cartItem {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   margin-bottom: 61px;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+    gap: 30px;
+  }
 
   &Block {
     display: flex;
