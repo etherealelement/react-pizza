@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useEffect } from "react";
 import styles from "./Cart.module.scss";
 import { ReactComponent as Logo } from "../../../assets/cartLogo.svg";
 import { ReactComponent as TrashIcon } from "../../../assets/trash-image.svg";
@@ -8,12 +8,12 @@ import { ReactComponent as ArrowGhost } from "../../../assets/ghost-arrow.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CardItem } from "../../../components/cartItem/cartItem";
-import { clearItems, removeItem } from "../../../redux/slices/cartSlice/cartSlice.ts";
+import {clearItems, removeItem} from "../../../redux/cart/slice.ts";
 import { EmptyCard } from "../../../components/emptyCard/EmptyCart";
 
 export const Cart: FC = (): JSX.Element => {
 	const dispatch = useDispatch();
-	const { totalPrice, items } = useSelector((state) => state.cart);
+	const { totalPrice, items } = useSelector((state:any) => state.cart);
 	// dataFetching
 
 	const onClickClear = () => {
@@ -22,14 +22,14 @@ export const Cart: FC = (): JSX.Element => {
 		}
 	};
 
-	const totalCount = items.reduce((acc, item) => {
+	const totalCount = items.reduce((acc:number, item: any) => {
 		return acc + item.count;
 	}, 0);
 
 	useEffect(() => {
 		const loadData = async () => {
 			const { data } = await axios.get(PRODUCT_DATA);
-			setProcuct(data);
+			removeItem(data);
 		};
 		loadData();
 	}, []);
@@ -58,7 +58,7 @@ export const Cart: FC = (): JSX.Element => {
 						</button>
 					</div>
 					<ul>
-						{items.map((item: any, index) => {
+						{items.map((item: any) => {
 							return (
 								<CardItem
 									id={item.id}

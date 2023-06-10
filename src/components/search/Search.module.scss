@@ -11,9 +11,15 @@
 		position: relative;
 		transition: all 0.15s ease-in-out;
 
+		@media (800) {
+			width: 300px;
+		}
+		@media (500) {
+			width: 100px;
+		}
+
 		&:focus {
 			border: 1px solid rgba(0, 0, 0, 0.2);
-			width: 400px;
 		}
 
 		&Icon {

@@ -3,8 +3,8 @@ import styles from "./Sort.module.scss";
 import {ReactComponent as ArrowIcon} from "../../assets/arrow-top.svg";
 import {SortListProps, SortValueProps} from "./Sort.props";
 import {useDispatch} from "react-redux";
-import { setSort} from "../../redux/slices/filterSlice/filterSlice.ts";
-import {SortPropertyEnum} from "../../redux/slices/filterSlice/filterSlice.interfaces.ts";
+import {setSort} from "../../redux/filter/slice.ts";
+import {SortPropertyEnum} from "../../redux/filter/types.ts";
 
 
 // eslint-disable-next-line react-refresh/only-export-components

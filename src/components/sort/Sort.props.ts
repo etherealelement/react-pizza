@@ -1,6 +1,7 @@
 import { HTMLAttributes } from 'react';
 import { DetailedHTMLProps } from 'react';
-import {SortPropertyEnum, SortType} from "../../redux/slices/filterSlice/filterSlice.interfaces.ts";
+import {SortPropertyEnum} from "../../redux/filter/types.ts";
+import {Sort} from "../../redux/filter/types.ts";
 
 
 export interface SortProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -12,7 +13,7 @@ export interface SortProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEleme
 }
 
 export interface SortValueProps  {
-    value: SortType;
+    value: Sort;
 }
 
 export interface  SortListProps {

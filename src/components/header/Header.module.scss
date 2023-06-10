@@ -3,6 +3,11 @@
 	justify-content: space-between;
 	padding: 52px 55px;
 	border-bottom: 1px solid #F7F7F7;
+	@media (max-width: 980px) {
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 30px;
+	}
 }
 
 .wrapper {

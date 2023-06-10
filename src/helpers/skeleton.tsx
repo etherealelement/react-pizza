@@ -1,11 +1,14 @@
-import React from "react";
+import {FC} from "react";
 import ContentLoader from "react-content-loader";
+import styles from "./skeleton.module.scss";
 
-export const SkeletonLoader = (props: any):JSX.Element => (
+
+export const SkeletonLoader:FC = (props: any):JSX.Element => (
   <ContentLoader 
     speed={2}
     width={280}
     height={460}
+    className={styles.skeleton}
     viewBox="0 0 280 460"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"

@@ -4,7 +4,7 @@ import styles from "./Search.module.scss";
 import { ReactComponent as SearchIcon } from "../../assets/searchIcons/172546_search_icon.svg";
 import debounce from "lodash.debounce";
 import { useDispatch } from "react-redux";
-import {setSearchValue} from "../../redux/slices/filterSlice/filterSlice.ts";
+import {setSearchValue} from "../../redux/filter/slice.ts";
 
 export const Search: FC<SearchProps> = ({
 	children,

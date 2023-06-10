@@ -3,18 +3,20 @@ import styles from "./cardList.module.scss";
 import {CartItem} from "../cardItem/CardItem";
 import {SkeletonLoader} from "../../helpers/skeleton";
 import {CardListProps} from "./cardList.props";
-import {selectFilter, setCategoryId} from "../../redux/slices/filterSlice/filterSlice.ts";
+import {selectFilter} from "../../redux/filter/selectors.ts";
+import {setCategoryId} from "../../redux/filter/slice.ts";
 import {NotFound} from "../notfound/NotFound";
 import {useSelector} from "react-redux";
-import {getPizzas, selectPizza} from "../../redux/slices/pizzaSlice/pizzaSlice.ts";
+import {getPizzas} from "../../redux/pizza/asyncActions.ts";
 import {Categories} from "../categories/Categories.tsx";
+import {selectPizzaData} from "../../redux/pizza/selectors.ts";
 import {Sort} from "../sort/Sort.tsx";
 import {useAppDispatch} from "../../redux/store.ts";
 
 
 export const CartList: FC<CardListProps> = (): JSX.Element => {
     const dispatch = useAppDispatch();
-    const {items, status} = useSelector(selectPizza);
+    const {items, status} = useSelector(selectPizzaData);
     const {categoryId, sort, currentPage, searchValue} = useSelector(selectFilter);
 
     const onChangeCategory = useCallback((idx: number) => {
@@ -60,7 +62,6 @@ export const CartList: FC<CardListProps> = (): JSX.Element => {
     const skeletonLoader = [...new Array(9)].map((_, index) => (
         <SkeletonLoader
             key={index}
-            className={styles.skeleton}
         ></SkeletonLoader>
     ));
 

@@ -7,5 +7,5 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
 	isCount?: boolean;
 	cartItem: string;
 	addedCount: number;
-	onClickAdd?: () => void;
+	onClickAdd: () => void;
 } 

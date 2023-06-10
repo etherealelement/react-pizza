@@ -3,8 +3,8 @@ import styles from "./CardItem.module.scss";
 import {ICartItemProps, PizzaBlockProps} from "./CardItem.props";
 import {Button} from "../ui/button/Button";
 import {useDispatch, useSelector} from "react-redux";
-import {addItem} from "../../redux/slices/cartSlice/cartSlice.ts";
-import {selectCartItemById} from "../../redux/slices/cartSlice/cartSlice.ts";
+import {addItem} from "../../redux/cart/slice.ts";
+import {selectCartItemById} from "../../redux/cart/selectors.ts";
 import {Link} from "react-router-dom";
 
 

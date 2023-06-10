@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import styles from "./ListItems.module.scss";
 import { ListItemsProps } from "./ListItems.props";
 import cn from "classnames";
